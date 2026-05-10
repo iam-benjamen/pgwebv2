@@ -79,16 +79,13 @@ const ProblemSection = () => {
           >
             <Box position="relative" aspectRatio={1.93}>
               {isPlaying ? (
-                <Box
-                  as="iframe"
+                <iframe
                   title="Project walkthrough video"
                   src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
-                  border="0"
-                  w="100%"
-                  h="100%"
+                  style={{ border: 0, width: "100%", height: "100%" }}
                 />
               ) : (
                 <>

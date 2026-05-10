@@ -54,10 +54,9 @@ const statItems = [
 const Stats = () => {
   return (
     <Box as="section" bg="#2345EF">
-      <Container maxW="1440px" px={{ base: 4, md: 10 }} py={{ base: 10, md: 8 }}>
+      <Container px={{ base: 4, md: 10 }} py={{ base: 10, md: 8 }}>
         <Box
           display={{ base: "grid", xl: "flex" }}
-          gridTemplateColumns={{ base: "1fr", sm: "repeat(2, minmax(0, 1fr))" }}
           gap={{ base: 8, md: 10 }}
           justifyContent="space-between"
           alignItems="center"
