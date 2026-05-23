@@ -3,12 +3,12 @@ import { Box, Container, HStack, Stack, Text } from "@chakra-ui/react";
 const statItems = [
   {
     value: (
-      <HStack gap="1" align="baseline" color="#050816">
+      <HStack gap="1" align="baseline" color="#ffffff">
         <Text as="span" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8">
           $
         </Text>
         <Text as="span" fontSize={{ base: "3.5rem", md: "5.625rem" }} lineHeight="0.8">
-          100
+          200
         </Text>
         <Text as="span" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8">
           M
@@ -22,7 +22,7 @@ const statItems = [
   },
   {
     value: (
-      <Text color="#050816" fontStyle="italic" fontSize={{ base: "3rem", md: "3.75rem" }} lineHeight="0.8">
+      <Text color="#ffffff" fontStyle="italic" fontSize={{ base: "3rem", md: "3.75rem" }} lineHeight="0.8">
         Forbes
       </Text>
     ),
@@ -30,7 +30,7 @@ const statItems = [
   },
   {
     value: (
-      <Text color="#050816" fontStyle="italic" fontSize={{ base: "3rem", md: "3.75rem" }} lineHeight="0.8">
+      <Text color="#ffffff" fontStyle="italic" fontSize={{ base: "3rem", md: "3.75rem" }} lineHeight="0.8">
         U.S. <Box as="span" color="#FFFFFF">+ Int&apos;l</Box>
       </Text>
     ),
@@ -39,7 +39,7 @@ const statItems = [
   {
     value: (
       <HStack gap="2" align="baseline">
-        <Text as="span" color="#050816" fontSize={{ base: "3.5rem", md: "5.625rem" }} lineHeight="0.8">
+        <Text as="span" color="#ffffff" fontSize={{ base: "3.5rem", md: "5.625rem" }} lineHeight="0.8">
           25
         </Text>
         <Text as="span" color="#FFFFFF" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8">
@@ -53,8 +53,12 @@ const statItems = [
 
 const Stats = () => {
   return (
-    <Box as="section" bg="#2345EF">
-      <Container px={{ base: 4, md: 10 }} py={{ base: 10, md: 8 }}>
+    <Box as="section" bg="#1C1C1C">
+      <Container
+        maxW={"100%"}
+        px={{ base: 4, md: 10 }}
+        py={{ base: 10, md: 8 }}
+      >
         <Box
           display={{ base: "grid", xl: "flex" }}
           gap={{ base: 8, md: 10 }}
@@ -79,7 +83,8 @@ const Stats = () => {
 
               <Text
                 color="#FFFFFF"
-                fontFamily="'Monument Extended', var(--font-poppins), sans-serif"
+                fontFamily="'Monument Extended', sans-serif"
+                fontWeight={400}
                 fontSize="0.9375rem"
                 lineHeight="1.33"
                 letterSpacing="-0.15px"

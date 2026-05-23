@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Container, HStack, Link as ChakraLink } from "@chakra-ui/react";
+import { Box, Button, Container, HStack, Link as ChakraLink } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Solutions", href: "#solutions" },
   { label: "Works", href: "#works" },
-  { label: "Our Clients", href: "#clients" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -61,8 +61,8 @@ export function Navbar() {
                   key={item.label}
                   asChild
                   color={isActive ? "#F1F1F1" : "#9B9B9B"}
-                  fontSize={isActive ? "18px" : "16px"}
-                  fontWeight={isActive ? "700" : "500"}
+                  fontSize={isActive ? "18px" : "14px"}
+                  fontWeight={isActive ? "500" : "500"}
                   lineHeight="150%"
                   transition="color 0.2s ease"
                   _hover={{ color: "#F1F1F1" }}
@@ -71,6 +71,23 @@ export function Navbar() {
                 </ChakraLink>
               );
             })}
+
+            <Button
+              asChild
+              bg="#2345EF"
+              color="#FFFFFF"
+              h="34px"
+              px={4}
+              borderRadius="6px"
+              fontFamily="var(--font-poppins)"
+              fontWeight="500"
+              fontSize="13px"
+              boxShadow="7px 42px 17px rgba(0,0,0,0.01), 4px 23px 14px rgba(0,0,0,0.05), 2px 10px 11px rgba(0,0,0,0.09), 0px 3px 6px rgba(0,0,0,0.1)"
+              _hover={{ bg: "#2D50FF" }}
+              flexShrink={0}
+            >
+              <Link href="#contact">Apply Now</Link>
+            </Button>
           </HStack>
         </HStack>
       </Container>
