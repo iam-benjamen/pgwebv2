@@ -60,7 +60,7 @@ const Footer = () => {
       pt={{ base: 16, md: 24 }}
       pb={{ base: 10, md: 8 }}
     >
-      <Container maxW="1440px" px={{ base: 4, md: 10 }}>
+      <Container maxW="100%" w="93%" mx="auto">
         <Grid
           templateColumns={{ base: "1fr", xl: "minmax(0, 440px) minmax(0, 1fr)" }}
           gap={{ base: 14, lg: 16, xl: 24 }}

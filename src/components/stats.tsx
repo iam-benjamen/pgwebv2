@@ -3,17 +3,34 @@ import { Box, Container, HStack, Stack, Text } from "@chakra-ui/react";
 const statItems = [
   {
     value: (
-      <HStack gap="1" align="baseline" color="#ffffff">
-        <Text as="span" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8">
+      <HStack gap="1" color="#ffffff">
+        <Text
+          as="span"
+          fontSize={{ base: "2.5rem", md: "3.5rem" }}
+          lineHeight="0.8"
+        >
           $
         </Text>
-        <Text as="span" fontSize={{ base: "3.5rem", md: "5.625rem" }} lineHeight="0.8">
+        <Text
+          as="span"
+          fontSize={{ base: "3.5rem", md: "5.625rem" }}
+          lineHeight="0.8"
+        >
           200
         </Text>
-        <Text as="span" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8">
+        <Text
+          as="span"
+          fontSize={{ base: "2.5rem", md: "3.75rem" }}
+          lineHeight="0.8"
+        >
           M
         </Text>
-        <Text as="span" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8" color="#FFFFFF">
+        <Text
+          as="span"
+          fontSize={{ base: "2.5rem", md: "3.75rem" }}
+          lineHeight="0.8"
+          color="#FFFFFF"
+        >
           +
         </Text>
       </HStack>
@@ -22,7 +39,12 @@ const statItems = [
   },
   {
     value: (
-      <Text color="#ffffff" fontStyle="italic" fontSize={{ base: "3rem", md: "3.75rem" }} lineHeight="0.8">
+      <Text
+        color="#ffffff"
+        fontStyle="italic"
+        fontSize={{ base: "3rem", md: "3.75rem" }}
+        lineHeight="0.8"
+      >
         Forbes
       </Text>
     ),
@@ -30,8 +52,16 @@ const statItems = [
   },
   {
     value: (
-      <Text color="#ffffff" fontStyle="italic" fontSize={{ base: "3rem", md: "3.75rem" }} lineHeight="0.8">
-        U.S. <Box as="span" color="#FFFFFF">+ Int&apos;l</Box>
+      <Text
+        color="#ffffff"
+        fontStyle="italic"
+        fontSize={{ base: "3rem", md: "3.75rem" }}
+        lineHeight="0.8"
+      >
+        U.S.{" "}
+        <Box as="span" color="#FFFFFF">
+          + Int'l
+        </Box>
       </Text>
     ),
     label: "MARKET REACH",
@@ -39,10 +69,20 @@ const statItems = [
   {
     value: (
       <HStack gap="2" align="baseline">
-        <Text as="span" color="#ffffff" fontSize={{ base: "3.5rem", md: "5.625rem" }} lineHeight="0.8">
-          25
+        <Text
+          as="span"
+          color="#ffffff"
+          fontSize={{ base: "3.5rem", md: "5.625rem" }}
+          lineHeight="0.8"
+        >
+          29
         </Text>
-        <Text as="span" color="#FFFFFF" fontSize={{ base: "2.5rem", md: "3.75rem" }} lineHeight="0.8">
+        <Text
+          as="span"
+          color="#FFFFFF"
+          fontSize={{ base: "2.5rem", md: "3.75rem" }}
+          lineHeight="0.8"
+        >
           Years
         </Text>
       </HStack>
@@ -55,8 +95,9 @@ const Stats = () => {
   return (
     <Box as="section" bg="#1C1C1C">
       <Container
+        w={"93%"}
         maxW={"100%"}
-        px={{ base: 4, md: 10 }}
+        margin="0 auto"
         py={{ base: 10, md: 8 }}
       >
         <Box

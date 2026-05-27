@@ -1,24 +1,28 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  HStack,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
+import { Box, Button, Heading, HStack, Stack, Text } from "@chakra-ui/react";
+
+function StarIcon({ filled, color }: { filled: boolean; color: string }) {
+  return (
+    <svg width="26" height="25" viewBox="0 0 26 25" fill="none" aria-hidden="true">
+      <path
+        d="M13 0L15.9389 8.52786H24.9616L17.7613 13.7934L20.7003 22.3213L13.5 17.0557L6.29972 22.3213L9.23873 13.7934L2.03842 8.52786H11.0611L13 0Z"
+        fill={filled ? color : `${color}33`}
+      />
+    </svg>
+  );
+}
 
 const testimonials = [
   {
-    rating: 4,
+    rating: 5,
     quote:
       "These guys are the best to work with. Lorem Ipsum dolor sit amet and every other things people write. But all I know is that PGStudio is second to none.",
     name: "Promise Adediran",
     role: "Founder, PGStudio",
+    starColor: "#2345EF",
   },
   {
     rating: 5,
@@ -26,308 +30,212 @@ const testimonials = [
       "We needed clients to gain confidence fast and save their decisions forever. Many teams promise it. PGStudio made it clear.",
     name: "Amara Lowell",
     role: "Principal Designer",
+    starColor: "#2345EF",
   },
   {
-    rating: 5,
+    rating: 4,
     quote:
-      "Financial planning, knowledge and money in the right places helped people all of our team understand the vision faster.",
+      "Financial planning and knowledge in the right places helped our entire team understand the vision faster than ever.",
     name: "Guy Hawkins",
     role: "Medical Assistant",
+    starColor: "#2345EF",
   },
-] as const;
+];
 
-const slideDuration = 380;
-type SlideDirection = "previous" | "next";
+function Stars({ count, color }: { count: number; color: string }) {
+  return (
+    <HStack gap="8px" justify="center">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <StarIcon key={i} filled={i < count} color={color} />
+      ))}
+    </HStack>
+  );
+}
 
-const Stars = ({ rating, muted = false }: { rating: number; muted?: boolean }) => (
-  <HStack gap={{ base: 1.5, md: 2 }}>
-    {Array.from({ length: 5 }).map((_, index) => (
-      <Box
-        key={index}
-        as="span"
-        color={
-          index < rating
-            ? muted
-              ? "#1F3CC8"
-              : "#2747E8"
-            : muted
-              ? "rgba(39, 71, 232, 0.28)"
-              : "#E3E8FF"
-        }
-        fontSize={{ base: "24px", md: "30px" }}
-        lineHeight="1"
-      >
-        ★
-      </Box>
-    ))}
-  </HStack>
-);
+export default function TestimonialsSection() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    containScroll: false,
+  });
 
-const TestimonialCard = ({
-  testimonial,
-  active,
-}: {
-  testimonial: (typeof testimonials)[number];
-  active: boolean;
-}) => (
-  <Box
-    flex="0 0 auto"
-    w={
-      active
-        ? { base: "calc(100vw - 32px)", md: "640px", xl: "786px" }
-        : { base: "calc(100vw - 80px)", md: "430px", xl: "474px" }
-    }
-    minH={active ? { base: "470px", md: "469px" } : { base: "380px", md: "468px" }}
-    borderRadius={{ base: "18px", md: "18px" }}
-    bg={active ? "#FFFFFF" : "linear-gradient(90deg, #111111 0%, #1B1B1B 100%)"}
-    color={active ? "#050505" : "rgba(255, 255, 255, 0.62)"}
-    px={active ? { base: 7, md: 12 } : { base: 7, md: 12 }}
-    py={active ? { base: 9, md: 14 } : { base: 8, md: 12 }}
-    opacity={active ? 1 : 0.82}
-    overflow="hidden"
-    position="relative"
-    boxShadow={active ? "0 34px 80px rgba(0, 0, 0, 0.34)" : "none"}
-    transition="width 260ms ease, opacity 260ms ease, transform 260ms ease"
-  >
-    <Stack gap={{ base: 7, md: 9 }} h="full" justify="space-between">
-      <Stack gap={{ base: 7, md: 9 }}>
-        <Stars rating={testimonial.rating} muted={!active} />
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-        <Text
-          fontFamily="var(--font-poppins), sans-serif"
-          fontWeight="500"
-          fontSize={active ? { base: "26px", md: "35px" } : { base: "24px", md: "34px" }}
-          lineHeight={active ? { base: "1.24", md: "41px" } : { base: "1.25", md: "41px" }}
-          letterSpacing="-0.45px"
-          maxW={active ? "690px" : "420px"}
-        >
-          “{testimonial.quote}”
-        </Text>
-      </Stack>
-
-      <HStack gap={{ base: 4, md: 5 }} align="center">
-        <Box
-          w={{ base: "62px", md: "74px" }}
-          h={{ base: "62px", md: "74px" }}
-          borderRadius="full"
-          flexShrink={0}
-          bg={active ? "#D9D9D9" : "linear-gradient(135deg, #F2F2F2 0%, #A9A9A9 100%)"}
-        />
-        <Stack gap={1}>
-          <Text
-            fontFamily="var(--font-poppins), sans-serif"
-            fontWeight="800"
-            fontSize={{ base: "20px", md: "26px" }}
-            lineHeight="1"
-            textTransform="uppercase"
-            color={active ? "#050505" : "rgba(255, 255, 255, 0.62)"}
-          >
-            {testimonial.name}
-          </Text>
-          <Text
-            fontFamily="var(--font-poppins), sans-serif"
-            fontWeight="500"
-            fontSize={{ base: "13px", md: "15px" }}
-            lineHeight="1.2"
-            color={active ? "#050505" : "rgba(255, 255, 255, 0.38)"}
-          >
-            {testimonial.role}
-          </Text>
-        </Stack>
-      </HStack>
-    </Stack>
-
-    {active ? (
-      <>
-        <Button
-          aria-label="Play testimonial video"
-          position="absolute"
-          right={{ base: 7, md: 14 }}
-          bottom={{ base: 9, md: 15 }}
-          w={{ base: "56px", md: "64px" }}
-          h={{ base: "56px", md: "64px" }}
-          minW="unset"
-          borderRadius="full"
-          bg="#2345EF"
-          _hover={{ bg: "#3555F4" }}
-          _active={{ bg: "#1B3BE2" }}
-        >
-          <Box
-            ml="4px"
-            w="0"
-            h="0"
-            borderTop={{ base: "11px solid transparent", md: "13px solid transparent" }}
-            borderBottom={{ base: "11px solid transparent", md: "13px solid transparent" }}
-            borderLeft={{ base: "17px solid #FFFFFF", md: "21px solid #FFFFFF" }}
-          />
-        </Button>
-
-        <Box
-          aria-hidden="true"
-          position="absolute"
-          right={{ base: "-10px", md: "10px" }}
-          bottom="-52px"
-          color="#2345EF"
-          fontFamily="Georgia, serif"
-          fontSize={{ base: "140px", md: "190px" }}
-          fontWeight="400"
-          lineHeight="0.7"
-          letterSpacing="-22px"
-          transform="rotate(180deg)"
-          css={{ WebkitTextStroke: "1px #2345EF" }}
-        >
-          “
-        </Box>
-      </>
-    ) : null}
-  </Box>
-);
-
-const TestimonialsSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState<SlideDirection | null>(null);
-  const slideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
-    return () => {
-      if (slideTimeoutRef.current) {
-        clearTimeout(slideTimeoutRef.current);
-      }
-    };
-  }, []);
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi, onSelect]);
 
-  const orderedTestimonials = useMemo(() => {
-    const previous =
-      testimonials[(activeIndex - 1 + testimonials.length) % testimonials.length];
-    const active = testimonials[activeIndex];
-    const next = testimonials[(activeIndex + 1) % testimonials.length];
-
-    return [previous, active, next];
-  }, [activeIndex]);
-
-  const startSlide = (direction: SlideDirection) => {
-    if (slideDirection) return;
-
-    setSlideDirection(direction);
-    slideTimeoutRef.current = setTimeout(() => {
-      setActiveIndex((index) =>
-        direction === "next"
-          ? (index + 1) % testimonials.length
-          : (index - 1 + testimonials.length) % testimonials.length,
-      );
-      setSlideDirection(null);
-    }, slideDuration);
-  };
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <Box
       as="section"
       bg="#000000"
       color="#FFFFFF"
+      py={{ base: 16, xl: 24 }}
       overflow="hidden"
       position="relative"
-      py={{ base: 18, md: 24, xl: 28 }}
     >
-      <Box
-        position="absolute"
-        insetX={0}
-        top="270px"
-        h="470px"
-        bg="radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0) 62%)"
-        pointerEvents="none"
-      />
-      <Container maxW="1440px" px={{ base: 4, md: 10 }} position="relative">
-        <Stack align="center" gap={{ base: 10, md: 14 }}>
-          <Heading
-            fontFamily="'PP Monument Extended', 'Monument Extended', var(--font-poppins), sans-serif"
-            fontWeight="800"
-            fontSize={{ base: "32px", md: "48px" }}
-            lineHeight={{ base: "1.18", md: "64px" }}
-            letterSpacing="0.3px"
-            textTransform="uppercase"
-            textAlign="center"
-            color="#FFFFFF"
-          >
-            What our clients say
-          </Heading>
+      {/* Heading */}
+      <Heading
+        fontFamily="'Monument Extended', 'PP Monument Extended', var(--font-poppins), sans-serif"
+        fontWeight="800"
+        fontSize={{ base: "28px", md: "40px", xl: "48px" }}
+        lineHeight={{ base: "1.2", xl: "64px" }}
+        letterSpacing="0.3px"
+        textTransform="uppercase"
+        textAlign="center"
+        color="#FFFFFF"
+        mb={{ base: 10, xl: 20 }}
+        px={4}
+      >
+        What our clients say
+      </Heading>
 
-          <Flex
-            align="center"
-            justify="center"
-            gap={{ base: 4, md: 7 }}
-            w="max-content"
-            maxW="none"
-            transform={
-              slideDirection === "next"
-                ? {
-                    base: "translateX(calc(-1 * (100vw - 64px)))",
-                    md: "translateX(-458px)",
-                    xl: "translateX(-502px)",
+      {/* Carousel viewport */}
+      <Box position="relative">
+        <Box ref={emblaRef} overflow="hidden" pt="48px" mt="-48px">
+          <Box display="flex" alignItems="flex-end" style={{ gap: "24px" }}>
+            {testimonials.map((t, i) => {
+              const isActive = i === selectedIndex;
+              return (
+                <Box
+                  key={t.name}
+                  flex="0 0 auto"
+                  w={
+                    isActive
+                      ? { base: "min(850px, calc(100vw - 48px))", xl: "850px" }
+                      : { base: "min(474px, calc(100vw - 96px))", xl: "474px" }
                   }
-                : slideDirection === "previous"
-                  ? {
-                      base: "translateX(calc(100vw - 64px))",
-                      md: "translateX(458px)",
-                      xl: "translateX(502px)",
-                    }
-                  : "translateX(0)"
-            }
-            transition={
-              slideDirection
-                ? `transform ${slideDuration}ms cubic-bezier(0.65, 0, 0.35, 1)`
-                : "none"
-            }
-            willChange="transform"
-          >
-            {orderedTestimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={`${testimonial.name}-${index}`}
-                testimonial={testimonial}
-                active={index === 1}
-              />
-            ))}
-          </Flex>
+                  minH={isActive ? { base: "460px", xl: "506px" } : { base: "400px", xl: "460px" }}
+                  transform={isActive ? "translateY(-40px)" : "translateY(0)"}
+                  transition="transform 0.4s ease, width 0.4s ease, opacity 0.4s ease"
+                  borderRadius="20px"
+                  bg={isActive ? "#FFFFFF" : "#191919"}
+                  color={isActive ? "#000000" : "rgba(255,255,255,0.65)"}
+                  px={isActive ? { base: 7, xl: 12 } : { base: 6, xl: 9 }}
+                  py={isActive ? { base: 8, xl: 12 } : { base: 7, xl: 10 }}
+                  opacity={isActive ? 1 : 0.65}
+                  boxShadow={isActive ? "0 40px 80px rgba(0,0,0,0.5)" : "none"}
+                  position="relative"
+                  overflow="hidden"
+                  cursor={isActive ? "default" : "pointer"}
+                  onClick={isActive ? undefined : i < selectedIndex ? scrollPrev : scrollNext}
+                >
+                  <Stack align={"start"} gap={isActive ? { base: 6, xl: 9 } : 5} h="full" justify="space-between">
+                    {/* Stars + quote */}
+                    <Stack gap={isActive ? { base: 5, xl: 8 } : 5}>
+                      <HStack justify="start">
+                        <Stars count={t.rating} color={isActive ? "#2345EF" : t.starColor} />
+                      </HStack>
+                      <Text
+                        fontFamily="var(--font-poppins), sans-serif"
+                        fontWeight="400"
+                        fontSize={isActive ? { base: "20px", xl: "32px" } : { base: "15px", xl: "20px" }}
+                        lineHeight={isActive ? { base: "1.4", xl: "45px" } : "1.5"}
+                        textAlign="left"
+                        w="full"
+                      >
+                        &ldquo;{t.quote}&rdquo;
+                      </Text>
+                    </Stack>
 
-          <HStack gap={7}>
-            <Button
-              aria-label="Previous testimonial"
-              onClick={() => startSlide("previous")}
-              disabled={Boolean(slideDirection)}
-              w="56px"
-              h="56px"
-              minW="unset"
-              borderRadius="full"
-              bg="#1A1A1A"
-              color="#FFFFFF"
-              fontSize="25px"
-              _hover={{ bg: "#262626" }}
-              _active={{ bg: "#101010" }}
-              _disabled={{ opacity: 0.45, cursor: "not-allowed" }}
-            >
-              ←
-            </Button>
-            <Button
-              aria-label="Next testimonial"
-              onClick={() => startSlide("next")}
-              disabled={Boolean(slideDirection)}
-              w="56px"
-              h="56px"
-              minW="unset"
-              borderRadius="full"
-              bg="#FFFFFF"
-              color="#050505"
-              fontSize="25px"
-              _hover={{ bg: "#EDEDED" }}
-              _active={{ bg: "#DCDCDC" }}
-              _disabled={{ opacity: 0.65, cursor: "not-allowed" }}
-            >
-              →
-            </Button>
-          </HStack>
-        </Stack>
-      </Container>
+                    {/* Avatar + name */}
+                    <HStack gap={4} justify="start" align="center">
+                      <Box
+                        w={{ base: "56px", xl: "74px" }}
+                        h={{ base: "56px", xl: "74px" }}
+                        borderRadius="full"
+                        flexShrink={0}
+                        bg={isActive ? "#D9D9D9" : "rgba(255,255,255,0.12)"}
+                      />
+                      <Stack gap="4px">
+                        <Text
+                          fontFamily="'Monument Extended', var(--font-poppins), sans-serif"
+                          fontWeight="800"
+                          fontSize={{ base: "14px", xl: "18px" }}
+                          lineHeight="1.2"
+                          textTransform="uppercase"
+                          letterSpacing="0.3px"
+                          color={isActive ? "#000000" : "rgba(255,255,255,0.85)"}
+                        >
+                          {t.name}
+                        </Text>
+                        <Text
+                          fontFamily="var(--font-poppins), sans-serif"
+                          fontWeight="400"
+                          fontSize={{ base: "12px", xl: "14px" }}
+                          color={isActive ? "#555555" : "rgba(255,255,255,0.38)"}
+                        >
+                          {t.role}
+                        </Text>
+                      </Stack>
+                    </HStack>
+                  </Stack>
+
+                </Box>
+              );
+            })}
+          </Box>
+        </Box>
+
+        {/* Edge fade — left */}
+        <Box
+          position="absolute" insetY={0} left={0}
+          w={{ base: "60px", md: "160px", xl: "260px" }}
+          pointerEvents="none"
+          bg="linear-gradient(90deg, #000 30%, transparent 100%)"
+        />
+        {/* Edge fade — right */}
+        <Box
+          position="absolute" insetY={0} right={0}
+          w={{ base: "60px", md: "160px", xl: "260px" }}
+          pointerEvents="none"
+          bg="linear-gradient(270deg, #000 30%, transparent 100%)"
+        />
+      </Box>
+
+      {/* Controls */}
+      <HStack justify="center" gap={5} mt={{ base: 10, xl: 12 }}>
+        <Button
+          aria-label="Previous testimonial"
+          onClick={scrollPrev}
+          w={{ base: "52px", xl: "60px" }}
+          h={{ base: "52px", xl: "60px" }}
+          minW="unset"
+          borderRadius="full"
+          bg="rgba(255,255,255,0.08)"
+          color="#FFFFFF"
+          fontSize="22px"
+          border="1px solid rgba(255,255,255,0.12)"
+          _hover={{ bg: "rgba(255,255,255,0.15)" }}
+        >
+          ←
+        </Button>
+        <Button
+          aria-label="Next testimonial"
+          onClick={scrollNext}
+          w={{ base: "52px", xl: "60px" }}
+          h={{ base: "52px", xl: "60px" }}
+          minW="unset"
+          borderRadius="full"
+          bg="#FFFFFF"
+          color="#000000"
+          fontSize="22px"
+          _hover={{ bg: "#EDEDED" }}
+        >
+          →
+        </Button>
+      </HStack>
     </Box>
   );
-};
-
-export default TestimonialsSection;
+}

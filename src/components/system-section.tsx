@@ -60,7 +60,7 @@ const SystemSection = () => {
         pointerEvents="none"
       />
 
-      <Container maxW="1440px" px={{ base: 4, md: 10 }}>
+      <Container w={"93%"} mx="auto" maxW="100%">
         <Stack gap={{ base: 12, md: 14 }}>
           <Stack gap={2} maxW="820px">
             <Heading

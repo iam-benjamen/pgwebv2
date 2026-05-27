@@ -6,7 +6,7 @@ import Image from "next/image";
 const CtaSection = () => {
   return (
     <Box as="section" bg="#020100" py={{ base: 10, md: 14, xl: 16 }}>
-      <Container maxW="1440px" px={{ base: 4, md: 10 }}>
+      <Container maxW="100%" w="93%" mx="auto">
         <Box
           position="relative"
           overflow="hidden"

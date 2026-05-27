@@ -25,8 +25,8 @@ const Hero = () => {
         position="absolute"
         left="50%"
         style={{ transform: "translateX(-50%)" }}
-        top={{ base: "40%", md: "42%" }}
-        w={{ base: "100%", md: "1290px" }}
+        top={{ base: "40%", md: "35%" }}
+        w={{ base: "95%", md: "90%" }}
         h={{ base: "60%", md: "860px" }}
         zIndex={0}
       >
@@ -53,9 +53,9 @@ const Hero = () => {
       <Box position="relative" zIndex={2}>
         <Navbar />
 
-        <Container maxW="1290px" mx="auto" px={{ base: 4, md: 6 }}>
+        <Container maxW="100%" mx="auto" px={{ base: 4, md: 6 }}>
           {/* Heading block */}
-          <Stack align="center" pt={{ base: 16, md: "130px" }} gap={{ base: 3, md: "14px" }}>
+          <Stack align="center" pt={{ base: 16, md: "11rem" }} gap={{ base: 3, md: "14px" }}>
             <Heading
               fontFamily="'Monument Extended', sans-serif"
               fontWeight="800"
@@ -97,7 +97,7 @@ const Hero = () => {
           </Stack>
 
           {/* Subcopy + buttons */}
-          <Stack align="center" mt={{ base: 8, md: "60px" }} gap={6}>
+          <Stack align="center" mt={{ base: 8, md: "1.5rem" }} gap={6}>
             <Text
               fontFamily="var(--font-poppins)"
               fontWeight="400"
@@ -118,7 +118,7 @@ const Hero = () => {
                 color="#FFFFFF"
                 h="63px"
                 px={6}
-                borderRadius="24px"
+                borderRadius="16px"
                 fontFamily="var(--font-poppins)"
                 fontWeight="500"
                 fontSize="18px"
@@ -132,7 +132,7 @@ const Hero = () => {
                 color="#FFFFFF"
                 h="63px"
                 px={6}
-                borderRadius="24px"
+                borderRadius="16px"
                 fontFamily="var(--font-poppins)"
                 fontWeight="500"
                 fontSize="18px"
@@ -149,8 +149,7 @@ const Hero = () => {
       {/* Floating CTA badge — fixed, always visible while scrolling */}
       <Box
         position="fixed"
-        right={{ base: "20px", md: "40px" }}
-        bottom={{ base: "20px", md: "40px" }}
+        right={{ base: "20px", md: "4rem" }}
         w={{ base: "120px", md: "175px" }}
         h={{ base: "120px", md: "175px" }}
         borderRadius="full"

@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/react";
 import Hero from "@/components/hero";
 import ProblemSection from "@/components/problem-section";
 import Stats from "@/components/stats";
+import { OurClientsSection } from "@/components/our-clients-section";
 import SystemSection from "@/components/system-section";
 import TestimonialsSection from "@/components/testimonials-section";
 import InteriorDesignersSection from "@/components/interior-designers-section";
@@ -15,6 +16,7 @@ export default function Home() {
     <Box minH="100svh" bg="#050816" color="#F5F7FA">
       <Hero />
       <Stats />
+      <OurClientsSection />
       <ProblemSection />
       <SystemSection />
       <TestimonialsSection />

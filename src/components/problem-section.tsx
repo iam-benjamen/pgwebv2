@@ -23,21 +23,21 @@ const ProblemSection = () => {
       overflow="hidden"
       bg="#171717"
       py={{ base: 20, md: 24, xl: 28 }}
+      w="full"
     >
       <Box
         position="absolute"
         top={{ base: "-120px", md: "-180px" }}
         left="50%"
         transform="translateX(-50%)"
-        w={{ base: "520px", md: "940px" }}
+        w={{ base: "520px", md: "100%" }}
         h={{ base: "220px", md: "320px" }}
         borderRadius="full"
-        bg="rgba(35, 69, 239, 0.18)"
         filter="blur(110px)"
         pointerEvents="none"
       />
 
-      <Container maxW="1440px" px={{ base: 4, md: 10 }}>
+      <Container maxW="100%" px={{ base: 4, md: 10 }}>
         <Stack align="center" gap={{ base: 8, md: 10 }}>
           <Stack align="center" gap={{ base: 4, md: 5 }} maxW="720px">
             <Heading
@@ -45,7 +45,7 @@ const ProblemSection = () => {
               textAlign="center"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="700"
-              fontSize={{ base: "2.35rem", md: "3.5rem" }}
+              fontSize={{ base: "2.35rem", md: "3.25rem" }}
               lineHeight={{ base: "1.08", md: "1.2" }}
               letterSpacing="-0.6px"
             >
@@ -72,7 +72,7 @@ const ProblemSection = () => {
             w="full"
             maxW="1070px"
             borderRadius={{ base: "22px", md: "28px" }}
-            border="8px solid #2345EF"
+            border="10px solid #2345EF"
             overflow="hidden"
             boxShadow="0px 114px 69px rgba(0, 0, 0, 0.05), 0px 51px 51px rgba(0, 0, 0, 0.09), 0px 13px 28px rgba(0, 0, 0, 0.1)"
             bg="#0F0F0F"
@@ -138,7 +138,7 @@ const ProblemSection = () => {
             color="#FFFFFF"
             h="63px"
             px={8}
-            borderRadius="24px"
+            borderRadius="16px"
             fontFamily="var(--font-poppins), sans-serif"
             fontWeight="500"
             fontSize="18px"
