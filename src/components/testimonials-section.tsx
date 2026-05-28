@@ -5,11 +5,16 @@ import { useCallback, useEffect, useState } from "react";
 import { Box, Button, Heading, HStack, Stack, Text } from "@chakra-ui/react";
 
 function StarIcon({ filled, color }: { filled: boolean; color: string }) {
+  const c = filled ? color : `${color}33`;
   return (
-    <svg width="26" height="25" viewBox="0 0 26 25" fill="none" aria-hidden="true">
+    <svg width="26" height="26" viewBox="-1 -1 28 27" fill="none" aria-hidden="true">
       <path
-        d="M13 0L15.9389 8.52786H24.9616L17.7613 13.7934L20.7003 22.3213L13.5 17.0557L6.29972 22.3213L9.23873 13.7934L2.03842 8.52786H11.0611L13 0Z"
-        fill={filled ? color : `${color}33`}
+        d="M13 1L15.9 8.3L23 9.3L18 14.1L19.1 21L13 17.8L6.9 21L8 14.1L3 9.3L10.1 8.3Z"
+        fill={c}
+        stroke={c}
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -70,7 +75,9 @@ export default function TestimonialsSection() {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on("select", onSelect);
-    return () => { emblaApi.off("select", onSelect); };
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -110,38 +117,64 @@ export default function TestimonialsSection() {
               return (
                 <Box
                   key={t.name}
-                  flex="0 0 auto"
+                  // flex="0 0 auto"
+                  display={"flex"}
                   w={
                     isActive
                       ? { base: "min(850px, calc(100vw - 48px))", xl: "850px" }
                       : { base: "min(474px, calc(100vw - 96px))", xl: "474px" }
                   }
-                  minH={isActive ? { base: "460px", xl: "506px" } : { base: "400px", xl: "460px" }}
+                  minH={
+                    isActive
+                      ? { base: "460px", xl: "506px" }
+                      : { base: "400px", xl: "460px" }
+                  }
                   transform={isActive ? "translateY(-40px)" : "translateY(0)"}
                   transition="transform 0.4s ease, width 0.4s ease, opacity 0.4s ease"
                   borderRadius="20px"
                   bg={isActive ? "#FFFFFF" : "#191919"}
                   color={isActive ? "#000000" : "rgba(255,255,255,0.65)"}
                   px={isActive ? { base: 7, xl: 12 } : { base: 6, xl: 9 }}
-                  py={isActive ? { base: 8, xl: 12 } : { base: 7, xl: 10 }}
+                  py={isActive ? { base: 8, xl: 16 } : { base: 7, xl: 10 }}
                   opacity={isActive ? 1 : 0.65}
                   boxShadow={isActive ? "0 40px 80px rgba(0,0,0,0.5)" : "none"}
                   position="relative"
-                  overflow="hidden"
+                  // overflow="hidden"
                   cursor={isActive ? "default" : "pointer"}
-                  onClick={isActive ? undefined : i < selectedIndex ? scrollPrev : scrollNext}
+                  onClick={
+                    isActive
+                      ? undefined
+                      : i < selectedIndex
+                        ? scrollPrev
+                        : scrollNext
+                  }
+                  justifyContent={"center"}
+                  // my={"auto"}
                 >
-                  <Stack align={"start"} gap={isActive ? { base: 6, xl: 9 } : 5} h="full" justify="space-between">
+                  <Stack
+                    align={"start"}
+                    gap={isActive ? { base: 6, xl: 9 } : 5}
+                    h="100%"
+                  >
                     {/* Stars + quote */}
                     <Stack gap={isActive ? { base: 5, xl: 8 } : 5}>
                       <HStack justify="start">
-                        <Stars count={t.rating} color={isActive ? "#2345EF" : t.starColor} />
+                        <Stars
+                          count={t.rating}
+                          color={isActive ? "#2345EF" : t.starColor}
+                        />
                       </HStack>
                       <Text
                         fontFamily="var(--font-poppins), sans-serif"
                         fontWeight="400"
-                        fontSize={isActive ? { base: "20px", xl: "32px" } : { base: "15px", xl: "20px" }}
-                        lineHeight={isActive ? { base: "1.4", xl: "45px" } : "1.5"}
+                        fontSize={
+                          isActive
+                            ? { base: "20px", xl: "32px" }
+                            : { base: "15px", xl: "20px" }
+                        }
+                        lineHeight={
+                          isActive ? { base: "1.4", xl: "45px" } : "1.5"
+                        }
                         textAlign="left"
                         w="full"
                       >
@@ -166,7 +199,9 @@ export default function TestimonialsSection() {
                           lineHeight="1.2"
                           textTransform="uppercase"
                           letterSpacing="0.3px"
-                          color={isActive ? "#000000" : "rgba(255,255,255,0.85)"}
+                          color={
+                            isActive ? "#000000" : "rgba(255,255,255,0.85)"
+                          }
                         >
                           {t.name}
                         </Text>
@@ -174,7 +209,9 @@ export default function TestimonialsSection() {
                           fontFamily="var(--font-poppins), sans-serif"
                           fontWeight="400"
                           fontSize={{ base: "12px", xl: "14px" }}
-                          color={isActive ? "#555555" : "rgba(255,255,255,0.38)"}
+                          color={
+                            isActive ? "#555555" : "rgba(255,255,255,0.38)"
+                          }
                         >
                           {t.role}
                         </Text>
@@ -182,29 +219,50 @@ export default function TestimonialsSection() {
                     </HStack>
                   </Stack>
 
+                  {isActive && (
+                    <Box
+                      position="absolute"
+                      right={{ base: "16px", xl: "32px" }}
+                      bottom="-4.5rem"
+                      fontFamily="var(--font-poppins), sans-serif"
+                      fontWeight="600"
+                      fontSize={{ base: "160px", xl: "250px" }}
+                      lineHeight="1"
+                      letterSpacing="-12px"
+                      color="transparent"
+                      transform="rotate(180deg)"
+                      pointerEvents="none"
+                      userSelect="none"
+                      zIndex={90}
+                      style={{ WebkitTextStroke: "1px #2345EF" }}
+                    >
+                      &ldquo;
+                    </Box>
+                  )}
                 </Box>
               );
             })}
           </Box>
         </Box>
 
-        {/* Edge fade — left */}
         <Box
-          position="absolute" insetY={0} left={0}
+          position="absolute"
+          insetY={0}
+          left={0}
           w={{ base: "60px", md: "160px", xl: "260px" }}
           pointerEvents="none"
           bg="linear-gradient(90deg, #000 30%, transparent 100%)"
         />
-        {/* Edge fade — right */}
         <Box
-          position="absolute" insetY={0} right={0}
+          position="absolute"
+          insetY={0}
+          right={0}
           w={{ base: "60px", md: "160px", xl: "260px" }}
           pointerEvents="none"
           bg="linear-gradient(270deg, #000 30%, transparent 100%)"
         />
       </Box>
 
-      {/* Controls */}
       <HStack justify="center" gap={5} mt={{ base: 10, xl: 12 }}>
         <Button
           aria-label="Previous testimonial"

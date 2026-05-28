@@ -6,6 +6,7 @@ import ProblemSection from "@/components/problem-section";
 import Stats from "@/components/stats";
 import { OurClientsSection } from "@/components/our-clients-section";
 import SystemSection from "@/components/system-section";
+import SalesSystemSection from "@/components/sales-system-section";
 import TestimonialsSection from "@/components/testimonials-section";
 import InteriorDesignersSection from "@/components/interior-designers-section";
 import CtaSection from "@/components/cta-section";
@@ -19,6 +20,7 @@ export default function Home() {
       <OurClientsSection />
       <ProblemSection />
       <SystemSection />
+      <SalesSystemSection />
       <TestimonialsSection />
       <InteriorDesignersSection />
       <CtaSection />
