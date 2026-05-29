@@ -3,16 +3,18 @@
 import { Box, Button, HStack, Link as ChakraLink } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "#about" },
   { label: "Solutions", href: "#solutions" },
-  { label: "Works", href: "#works" },
+  { label: "Works", href: "/works" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
   return (
     <Box
       as="header"
@@ -64,7 +66,7 @@ export function Navbar() {
           fontFamily="var(--font-poppins)"
         >
           {navItems.map((item) => {
-            const isActive = item.label === "Home";
+            const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
 
             return (
               <ChakraLink
