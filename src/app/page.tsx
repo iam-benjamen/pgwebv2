@@ -7,8 +7,10 @@ import Stats from "@/components/stats";
 import { OurClientsSection } from "@/components/our-clients-section";
 import SystemSection from "@/components/system-section";
 import SalesSystemSection from "@/components/sales-system-section";
+import ProofSection from "@/components/proof-section";
 import TestimonialsSection from "@/components/testimonials-section";
 import InteriorDesignersSection from "@/components/interior-designers-section";
+import FeaturedWorksSection from "@/components/featured-works-section";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 
@@ -21,6 +23,8 @@ export default function Home() {
       <ProblemSection />
       <SystemSection />
       <SalesSystemSection />
+      <ProofSection />
+      <FeaturedWorksSection />
       <TestimonialsSection />
       <InteriorDesignersSection />
       <CtaSection />

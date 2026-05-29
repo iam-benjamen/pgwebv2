@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 
 const YOUTUBE_VIDEO_ID = "ScMzIvxBSi4";
@@ -45,11 +38,12 @@ const ProblemSection = () => {
               textAlign="center"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="700"
-              fontSize={{ base: "2.35rem", md: "3.25rem" }}
+              fontSize={{ base: "2.35rem", md: "3rem" }}
               lineHeight={{ base: "1.08", md: "1.2" }}
               letterSpacing="-0.6px"
             >
-              Most projects don&apos;t struggle because of bad design.
+              Most projects don&apos;t <br /> struggle because of <br /> bad
+              design.
             </Heading>
 
             <Text

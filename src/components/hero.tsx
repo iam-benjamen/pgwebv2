@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { Navbar } from "./navbar";
+import FloatingBadge from "./floating-badge";
 
 const Hero = () => {
   return (
@@ -20,7 +21,6 @@ const Hero = () => {
       minH={{ base: "100svh", md: "1017px" }}
       overflow="hidden"
     >
-      {/* Background image — lower half */}
       <Box
         position="absolute"
         left="50%"
@@ -38,7 +38,6 @@ const Hero = () => {
           sizes="(max-width: 768px) 100vw, 1290px"
           style={{ objectFit: "cover" }}
         />
-        {/* Fade from black into the image */}
         <Box
           position="absolute"
           insetX={0}
@@ -49,12 +48,10 @@ const Hero = () => {
         />
       </Box>
 
-      {/* Content */}
       <Box position="relative" zIndex={2}>
         <Navbar />
 
         <Container maxW="100%" mx="auto" px={{ base: 4, md: 6 }}>
-          {/* Heading block */}
           <Stack align="center" pt={{ base: 16, md: "11rem" }} gap={{ base: 3, md: "14px" }}>
             <Heading
               fontFamily="'Monument Extended', sans-serif"
@@ -96,7 +93,6 @@ const Hero = () => {
             </Box>
           </Stack>
 
-          {/* Subcopy + buttons */}
           <Stack align="center" mt={{ base: 8, md: "1.5rem" }} gap={6}>
             <Text
               fontFamily="var(--font-poppins)"
@@ -146,27 +142,7 @@ const Hero = () => {
         </Container>
       </Box>
 
-      {/* Floating CTA badge — fixed, always visible while scrolling */}
-      <Box
-        position="fixed"
-        right={{ base: "20px", md: "4rem" }}
-        w={{ base: "120px", md: "175px" }}
-        h={{ base: "120px", md: "175px" }}
-        borderRadius="full"
-        border="2px solid transparent"
-        zIndex={100}
-        cursor="pointer"
-        _hover={{ transform: "scale(1.05)" }}
-        transition="transform 0.2s ease"
-      >
-        <Image
-          src="/assets/hero-section/badge-export.png"
-          alt="Claim Free Strategy Session — Launch Now"
-          fill
-          sizes="(max-width: 768px) 120px, 175px"
-          style={{ objectFit: "contain", borderRadius: "50%" }}
-        />
-      </Box>
+      <FloatingBadge />
     </Box>
   );
 };

@@ -62,6 +62,7 @@ export default function TestimonialsSection() {
     loop: true,
     align: "center",
     containScroll: false,
+    skipSnaps: false,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);

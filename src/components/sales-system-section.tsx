@@ -1,11 +1,28 @@
 "use client";
 
-import { Box, Button, Flex, Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 const listItems = [
-  { icon: "/assets/sales-system/icons/Virtual.png", label: "Virtual sales galleries" },
-  { icon: "/assets/sales-system/icons/Interactive.png", label: "Interactive walkthroughs" },
-  { icon: "/assets/sales-system/icons/Investor.png", label: "Investor-ready presentations" },
+  {
+    icon: "/assets/sales-system/icons/Virtual.png",
+    label: "Virtual sales galleries",
+  },
+  {
+    icon: "/assets/sales-system/icons/Interactive.png",
+    label: "Interactive walkthroughs",
+  },
+  {
+    icon: "/assets/sales-system/icons/Investor.png",
+    label: "Investor-ready presentations",
+  },
 ];
 
 export default function SalesSystemSection() {
@@ -26,7 +43,11 @@ export default function SalesSystemSection() {
         gap={{ base: 12, lg: 8, xl: 12 }}
       >
         {/* Left column */}
-        <Stack gap={{ base: 6, xl: 8 }} maxW={{ base: "100%", lg: "40%",  }} flexShrink={0}>
+        <Stack
+          gap={{ base: 6, xl: 8 }}
+          maxW={{ base: "100%", lg: "40%" }}
+          flexShrink={0}
+        >
           <Heading
             fontFamily="var(--font-poppins), sans-serif"
             fontWeight="700"
@@ -54,7 +75,8 @@ export default function SalesSystemSection() {
             color="#F0F0F0"
             // maxW="max-content"
           >
-            We build integrated systems that move your project from a vision to a sold-out reality.
+            We build integrated systems that move your project from a vision to
+            a sold-out reality.
           </Text>
 
           <Box>
@@ -82,7 +104,11 @@ export default function SalesSystemSection() {
                     alt=""
                     width={28}
                     height={28}
-                    style={{ objectFit: "contain", width: "100%", height: "100%" }}
+                    style={{
+                      objectFit: "contain",
+                      width: "100%",
+                      height: "100%",
+                    }}
                   />
                 </Box>
                 <Text
@@ -102,15 +128,9 @@ export default function SalesSystemSection() {
         {/* Right column — illustration with gradient border */}
         <Box
           flexShrink={0}
-          w={{ base: "100%", lg: "50%", xl: "645px" }}
-          h={{ base: "300px", md: "420px", xl: "567px" }}
-          borderRadius="40px"
+          w={{ base: "100%", lg: "50%" }}
+          h={{ base: "300px", md: "420px", xl: "max-content" }}
           p="1.5px"
-          style={{
-            background:
-              "linear-gradient(145deg, #2345EF 0%, #0B1240 35%, #080C1A 60%, #1a2f9e 100%)",
-          }}
-          boxShadow="0 0 40px rgba(35,69,239,0.25), 0 0 80px rgba(35,69,239,0.1)"
         >
           <Box
             w="100%"
@@ -121,7 +141,7 @@ export default function SalesSystemSection() {
             position="relative"
           >
             <img
-              src="/assets/sales-system/Illustration.png"
+              src="/assets/sales-system/illustration.png"
               alt="Digital Sales Environment illustration"
               style={{
                 width: "100%",

@@ -76,7 +76,7 @@ const CtaSection = () => {
               color="#FFFFFF"
               h="63px"
               px={8}
-              borderRadius="0"
+              borderRadius="5"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="500"
               fontSize="18px"
