@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 const works = [
   { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png" },
@@ -10,6 +11,7 @@ const works = [
 ];
 
 function WorkCard({ title, credit, image }: { title: string; credit: string; image: string }) {
+  const router = useRouter();
   return (
     <Box
       position="relative"
@@ -47,6 +49,10 @@ function WorkCard({ title, credit, image }: { title: string; credit: string; ima
         pb="0"
         borderRadius="9px"
         cursor="pointer"
+        onClick={() => {
+          // send to works page using next router
+          router.push("/works");
+        }}
         style={{
           background: "rgba(255, 255, 255, 0.1)",
           backdropFilter: "blur(10px)",
