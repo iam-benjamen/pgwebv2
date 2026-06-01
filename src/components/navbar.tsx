@@ -4,17 +4,26 @@ import { Box, Button, HStack, Link as ChakraLink } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about" },
   { label: "Solutions", href: "#solutions" },
   { label: "Works", href: "/works" },
   { label: "Contact", href: "#contact" },
 ];
 
+const solutionsDropdown = [
+  { label: "Interactive Configurators", href: "/solutions/interactive-configurators", letterSpacing: "-0.18px" },
+  { label: "Sales Systems", href: "/solutions/sales-systems", letterSpacing: undefined },
+  { label: "Visual Systems", href: "#solutions", letterSpacing: "-0.18px" },
+];
+
 export function Navbar() {
   const pathname = usePathname();
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+
   return (
     <Box
       as="header"
@@ -42,11 +51,7 @@ export function Navbar() {
         flexWrap={{ base: "wrap", md: "nowrap" }}
       >
         <Link href="/" aria-label="PGStudio home">
-          <Box
-            position="relative"
-            w={{ base: "190px", md: "243px" }}
-            h={{ base: "22px", md: "28px" }}
-          >
+          <Box position="relative" w={{ base: "190px", md: "243px" }} h={{ base: "22px", md: "28px" }}>
             <Image
               src="/assets/nav-logo.png"
               alt="PGStudio"
@@ -64,9 +69,86 @@ export function Navbar() {
           flexWrap="wrap"
           justify={{ base: "center", md: "flex-end" }}
           fontFamily="var(--font-poppins)"
+          alignSelf="stretch"
         >
           {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+            const isActive =
+              item.label === "Solutions"
+                ? pathname.startsWith("/solutions")
+                : pathname === item.href ||
+                  (item.href !== "/" && pathname.startsWith(item.href));
+
+            if (item.label === "Solutions") {
+              return (
+                <Box
+                  key={item.label}
+                  position="relative"
+                  display="flex"
+                  alignItems="center"
+                  alignSelf="stretch"
+                  onMouseEnter={() => setSolutionsOpen(true)}
+                  onMouseLeave={() => setSolutionsOpen(false)}
+                >
+                  <ChakraLink
+                    asChild
+                    color={isActive || solutionsOpen ? "#F1F1F1" : "#9B9B9B"}
+                    fontSize={isActive ? "18px" : "14px"}
+                    fontWeight="500"
+                    lineHeight="150%"
+                    transition="color 0.2s ease"
+                    _hover={{ color: "#F1F1F1" }}
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </ChakraLink>
+
+                  <Box
+                    position="absolute"
+                    top="100%"
+                    left="50%"
+                    transform="translateX(-50%)"
+                    pt="8px"
+                    display={solutionsOpen ? "block" : "none"}
+                  >
+                    <Box
+                      w="255px"
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="flex-start"
+                      px="12px"
+                      py="24px"
+                      gap="14px"
+                      bg="rgba(255, 255, 255, 0.08)"
+                      border="1px solid"
+                      borderColor="rgba(255, 255, 255, 0.15)"
+                      boxShadow="0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
+                      backdropFilter="blur(16px)"
+                      borderRadius="12px"
+                    >
+                      {solutionsDropdown.map((s) => {
+                        const isDropdownActive = pathname === s.href;
+                        return (
+                          <ChakraLink
+                            key={s.label}
+                            asChild
+                            fontFamily="var(--font-poppins), sans-serif"
+                            fontWeight={isDropdownActive ? "700" : "500"}
+                            fontSize="14px"
+                            lineHeight="20px"
+                            color={isDropdownActive ? "#FFFFFF" : "#9B9B9B"}
+                            letterSpacing={s.letterSpacing}
+                            _hover={{ color: "#FFFFFF" }}
+                            transition="color 0.2s ease"
+                            w="full"
+                          >
+                            <Link href={s.href}>{s.label}</Link>
+                          </ChakraLink>
+                        );
+                      })}
+                    </Box>
+                  </Box>
+                </Box>
+              );
+            }
 
             return (
               <ChakraLink
@@ -74,7 +156,7 @@ export function Navbar() {
                 asChild
                 color={isActive ? "#F1F1F1" : "#9B9B9B"}
                 fontSize={isActive ? "18px" : "14px"}
-                fontWeight={isActive ? "500" : "500"}
+                fontWeight="500"
                 lineHeight="150%"
                 transition="color 0.2s ease"
                 _hover={{ color: "#F1F1F1" }}

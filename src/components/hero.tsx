@@ -25,7 +25,7 @@ const Hero = () => {
         position="absolute"
         left="50%"
         style={{ transform: "translateX(-50%)" }}
-        top={{ base: "40%", md: "35%" }}
+        top={{ base: "40%", md: "36%" }}
         w={{ base: "95%", md: "90%" }}
         h={{ base: "60%", md: "860px" }}
         zIndex={0}
