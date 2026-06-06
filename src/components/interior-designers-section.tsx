@@ -27,8 +27,8 @@ const InteriorDesignersSection = () => {
       display="flex"
       alignItems="center"
     >
-      {/* Dot pattern — extreme left */}
       <Box
+        display={{ base: "none", lg: "block" }}
         position="absolute"
         top="-200px"
         left="-480px"
@@ -41,8 +41,8 @@ const InteriorDesignersSection = () => {
         style={{ ...dotPattern, ...dotMask }}
       />
 
-      {/* Dot pattern — extreme right */}
       <Box
+        display={{ base: "none", lg: "block" }}
         position="absolute"
         top="-200px"
         right="-480px"
@@ -55,7 +55,6 @@ const InteriorDesignersSection = () => {
         style={{ ...dotPattern, ...dotMask }}
       />
 
-      {/* Centre overlay so dots don't compete with text */}
       <Box
         position="absolute"
         inset={0}
@@ -66,11 +65,10 @@ const InteriorDesignersSection = () => {
         }}
       />
 
-      {/* Content — always centred */}
       <Flex
         position="relative"
         w="93%"
-        mx={'auto'}
+        mx={"auto"}
         maxW="100%"
         align="center"
         justify="space-between"
@@ -84,7 +82,7 @@ const InteriorDesignersSection = () => {
           fontWeight="800"
           fontSize={{ base: "28px", md: "40px", xl: "45px" }}
           lineHeight="120%"
-          maxW="50%"
+          maxW={{ md: "50%" }}
         >
           Also Built for Luxury Interior Designers
         </Heading>
@@ -104,10 +102,10 @@ const InteriorDesignersSection = () => {
           fontSize={{ base: "16px", md: "20px", xl: "24px" }}
           lineHeight={{ base: "1.5", xl: "30px" }}
           letterSpacing="-0.15px"
-          maxW="40%"
+          maxW={{ md: "40%" }}
         >
-          Help clients visualize, choose, and commit faster while reducing revisions and elevating
-          presentation quality.
+          Help clients visualize, choose, and commit faster while reducing
+          revisions and elevating presentation quality.
         </Text>
       </Flex>
     </Box>

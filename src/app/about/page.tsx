@@ -62,6 +62,7 @@ export default function AboutPage() {
 
               <Box
                 position="relative"
+                display={{base:"none", md:"block"}}
                 w={{ base: "260px", xl: "479px" }}
                 h="9px"
                 mt="-16px"
@@ -572,7 +573,7 @@ export default function AboutPage() {
                 <Box
                   position="absolute"
                   right={{ base: "16px", xl: "32px" }}
-                  bottom="-3.5rem"
+                  bottom={{base:"-2.5rem" ,md:"-3.5rem"}}
                   fontFamily="var(--font-poppins), sans-serif"
                   fontWeight="600"
                   fontSize={{ base: "160px", xl: "193px" }}

@@ -114,10 +114,10 @@ const SystemSection = () => {
                   bg="linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(35, 35, 35, 0.16) 35%, rgba(35, 35, 35, 0.62) 100%)"
                 />
                 <Stack
+                  px={{ base: 4, md: 6 }}
                   position="relative"
                   justify="flex-end"
                   h="full"
-                  px={6}
                   pb={8}
                   pt={10}
                   gap={5}

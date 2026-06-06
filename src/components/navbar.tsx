@@ -71,7 +71,6 @@ export function Navbar() {
           </Box>
         </Link>
 
-        {/* Desktop nav links */}
         <HStack
           flex="1"
           gap={{ base: 5, md: 8 }}
@@ -189,7 +188,6 @@ export function Navbar() {
           </Button>
         </HStack>
 
-        {/* Hamburger button — mobile only */}
         <Box
           as="button"
           display={{ base: "flex", md: "none" }}

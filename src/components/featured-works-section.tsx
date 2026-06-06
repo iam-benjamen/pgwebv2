@@ -50,13 +50,14 @@ function WorkCard({ title, credit, image }: { title: string; credit: string; ima
         borderRadius="9px"
         cursor="pointer"
         onClick={() => {
-          // send to works page using next router
           router.push("/works");
         }}
+        border="1px solid rgba(255, 255, 255, 0.18)"
+        boxShadow="0 4px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
         style={{
-          background: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
+          background: "rgba(255, 255, 255, 0.05)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
         }}
       >
         <Box
@@ -132,12 +133,14 @@ export default function FeaturedWorksSection() {
         <Button
           fontFamily="var(--font-poppins), sans-serif"
           fontWeight="500"
-          fontSize="18px"
+          fontSize={{ base:".75rem",md:"18px"}}
           bg="#2345EF"
           color="#FFFFFF"
           borderRadius="12px"
-          w="142px"
-          h="63px"
+          // w="142px"
+          // h="63px"
+          px={{base:"1.5rem", md:"2rem"}}
+          py={{base:"0.75rem", md:"1.5rem"}}
           _hover={{ bg: "#1a37cc" }}
           boxShadow="7px 42px 17px rgba(0,0,0,0.01), 4px 23px 14px rgba(0,0,0,0.05), 2px 10px 11px rgba(0,0,0,0.09), 0px 3px 6px rgba(0,0,0,0.1)"
         >

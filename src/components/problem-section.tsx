@@ -65,7 +65,7 @@ const ProblemSection = () => {
             position="relative"
             w="full"
             maxW="1070px"
-            borderRadius={{ base: "22px", md: "28px" }}
+            borderRadius={{ base: "18px", md: "28px" }}
             border="10px solid #2345EF"
             overflow="hidden"
             boxShadow="0px 114px 69px rgba(0, 0, 0, 0.05), 0px 51px 51px rgba(0, 0, 0, 0.09), 0px 13px 28px rgba(0, 0, 0, 0.1)"
@@ -97,17 +97,17 @@ const ProblemSection = () => {
                   />
                   <Button
                     onClick={() => setIsPlaying(true)}
+                    transform="translate(-50%, -50%)"
+                    w={{ base: "60px", md: "84px" }}
+                    h={{ base: "60px", md: "84px" }}
+                    boxShadow="0 20px 50px rgba(0, 0, 0, 0.28)"
                     position="absolute"
                     top="50%"
                     left="50%"
-                    transform="translate(-50%, -50%)"
-                    w={{ base: "76px", md: "84px" }}
-                    h={{ base: "76px", md: "84px" }}
                     minW="unset"
                     borderRadius="full"
-                    bg="#2345EF"
                     color="#EFF0FE"
-                    boxShadow="0 20px 50px rgba(0, 0, 0, 0.28)"
+                    bg="#2345EF"
                     _hover={{ bg: "#3555F4" }}
                     _active={{ bg: "#1B3BE2" }}
                     aria-label="Play video"
@@ -135,7 +135,7 @@ const ProblemSection = () => {
             borderRadius="16px"
             fontFamily="var(--font-poppins), sans-serif"
             fontWeight="500"
-            fontSize="18px"
+            fontSize={{ base: "16px", md: "18px" }}
             boxShadow="7px 42px 17px rgba(0, 0, 0, 0.01), 4px 23px 14px rgba(0, 0, 0, 0.05), 2px 10px 11px rgba(0, 0, 0, 0.09), 0px 3px 6px rgba(0, 0, 0, 0.1)"
             _hover={{ bg: "#3555F4" }}
             _active={{ bg: "#1B3BE2" }}

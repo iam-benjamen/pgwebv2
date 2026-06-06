@@ -15,7 +15,7 @@ const DefaultHeading = () => (
   <Heading
     fontFamily="'Monument Extended', var(--font-poppins), sans-serif"
     fontWeight="400"
-    fontSize={{ base: "2rem", md: "2.4rem", xl: "40px" }}
+    fontSize={{ base: "1.75rem", md: "2.4rem", xl: "40px" }}
     lineHeight="1.1"
     letterSpacing="-0.01em"
     color="#E9E9E9"
@@ -24,6 +24,7 @@ const DefaultHeading = () => (
     <Box as="span" display="inline-block" position="relative">
       Needs to Sell
       <Box
+      display={{base:"none", md:"block"}}
         position="absolute"
         left="50%"
         bottom={{ base: "-6px", md: "-8px" }}
@@ -98,7 +99,7 @@ const CtaSection = ({
               borderRadius=".5rem"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="500"
-              fontSize="18px"
+              fontSize={{ base: "16px", md: "18px", xl: "20px" }}
               boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
               _hover={{ bg: "#3555F4" }}
               _active={{ bg: "#1B3BE2" }}

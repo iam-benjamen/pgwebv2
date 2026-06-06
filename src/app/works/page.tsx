@@ -1,28 +1,94 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, Flex, Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import FloatingBadge from "@/components/floating-badge";
 
-const filters = ["All", "CS Studios", "Residential", "Commercial", "Interior", "Animation", "AV / Lighting", "Virtual Tours"];
-
-const projects = [
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "3/4" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "4/5" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "3/4" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "4/5" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "2/5" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "3/4" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png", ratio: "4/5" },
+const filters = [
+  "All",
+  "CS Studios",
+  "Residential",
+  "Commercial",
+  "Interior",
+  "Animation",
+  "AV / Lighting",
+  "Virtual Tours",
 ];
 
-function ProjectCard({ title, image, ratio = "4/5" }: { title: string; credit: string; image: string; ratio?: string }) {
+const projects = [
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "3/4",
+  },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "4/5",
+  },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "3/4",
+  },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "4/5",
+  },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "2/5",
+  },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "3/4",
+  },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image: "/assets/featured-works/featured.png",
+    ratio: "4/5",
+  },
+];
+
+function ProjectCard({
+  title,
+  image,
+  ratio = "4/5",
+}: {
+  title: string;
+  credit: string;
+  image: string;
+  ratio?: string;
+}) {
   return (
-    <Box position="relative" w="100%" style={{ aspectRatio: ratio }} overflow="hidden">
+    <Box
+      position="relative"
+      w="100%"
+      style={{ aspectRatio: ratio }}
+      overflow="hidden"
+    >
       <img
         src={image}
         alt={title}
@@ -93,6 +159,7 @@ export default function WorksPage() {
               </Heading>
 
               <Box
+                display={{ base: "none", md: "block" }}
                 position="relative"
                 w={{ base: "260px", xl: "479px" }}
                 h="9px"
@@ -105,7 +172,10 @@ export default function WorksPage() {
                   alt=""
                   fill
                   sizes="479px"
-                  style={{ objectFit: "contain", objectPosition: "left center" }}
+                  style={{
+                    objectFit: "contain",
+                    objectPosition: "left center",
+                  }}
                 />
               </Box>
 
@@ -124,7 +194,12 @@ export default function WorksPage() {
               </Text>
             </Stack>
 
-            <Stack gap={4} maxW={{ base: "100%", xl: "426px" }} flexShrink={0} align="flex-start">
+            <Stack
+              gap={4}
+              maxW={{ base: "100%", xl: "426px" }}
+              flexShrink={0}
+              align="flex-start"
+            >
               <Box w="30px" h="30px" flexShrink={0} position="relative">
                 <Image
                   src="/assets/works/Polygon.png"
@@ -141,12 +216,12 @@ export default function WorksPage() {
                 lineHeight="1.5"
                 color="#F2F0F0"
               >
-                Every project here represents a decision made, a deal closed, or a development funded.
-                This is what decision systems look like in the real world.
+                Every project here represents a decision made, a deal closed, or
+                a development funded. This is what decision systems look like in
+                the real world.
               </Text>
             </Stack>
           </Flex>
-
         </Box>
       </Box>
 
@@ -165,7 +240,11 @@ export default function WorksPage() {
                 fontSize="13px"
                 bg={activeFilter === f ? "#2345EF" : "rgba(255,255,255,0.07)"}
                 color={activeFilter === f ? "#FFFFFF" : "rgba(255,255,255,0.5)"}
-                border={activeFilter === f ? "none" : "1px solid rgba(255,255,255,0.12)"}
+                border={
+                  activeFilter === f
+                    ? "none"
+                    : "1px solid rgba(255,255,255,0.12)"
+                }
                 _hover={{
                   bg: activeFilter === f ? "#1a37cc" : "rgba(255,255,255,0.13)",
                   color: "#FFFFFF",

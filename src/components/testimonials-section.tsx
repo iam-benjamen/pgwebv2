@@ -93,7 +93,6 @@ export default function TestimonialsSection() {
       overflow="hidden"
       position="relative"
     >
-      {/* Heading */}
       <Heading
         fontFamily="'Monument Extended', 'PP Monument Extended', var(--font-poppins), sans-serif"
         fontWeight="800"
@@ -109,38 +108,36 @@ export default function TestimonialsSection() {
         What our clients say
       </Heading>
 
-      {/* Carousel viewport */}
       <Box position="relative">
         <Box ref={emblaRef} overflow="hidden" pt="48px" mt="-48px">
-          <Box display="flex" alignItems="flex-end" style={{ gap: "24px" }}>
+          <Box display="flex" alignItems="flex-end" gap={{ base: "0", xl: "24px" }}>
             {testimonials.map((t, i) => {
               const isActive = i === selectedIndex;
               return (
                 <Box
                   key={t.name}
-                  // flex="0 0 auto"
                   display={"flex"}
                   w={
                     isActive
-                      ? { base: "min(850px, calc(100vw - 48px))", xl: "850px" }
-                      : { base: "min(474px, calc(100vw - 96px))", xl: "474px" }
+                      ? { base: "calc(100vw - 32px)", lg: "850px" }
+                      : { base: "0", xl: "474px" }
                   }
                   minH={
                     isActive
-                      ? { base: "460px", xl: "506px" }
-                      : { base: "400px", xl: "460px" }
+                      ? { base: "auto", xl: "506px" }
+                      : { base: "0", xl: "460px" }
                   }
-                  transform={isActive ? "translateY(-40px)" : "translateY(0)"}
-                  transition="transform 0.4s ease, width 0.4s ease, opacity 0.4s ease"
+                  transform={isActive ? { base: "none", xl: "translateY(-40px)" } : "none"}
+                  transition="transform 0.4s ease, width 0.4s ease, min-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease"
                   borderRadius="20px"
                   bg={isActive ? "#FFFFFF" : "#191919"}
                   color={isActive ? "#000000" : "rgba(255,255,255,0.65)"}
-                  px={isActive ? { base: 7, xl: 12 } : { base: 6, xl: 9 }}
-                  py={isActive ? { base: 8, xl: 16 } : { base: 7, xl: 10 }}
-                  opacity={isActive ? 1 : 0.65}
+                  px={isActive ? { base: 6, xl: 12 } : { base: 0, xl: 9 }}
+                  py={isActive ? { base: 6, xl: 16 } : { base: 0, xl: 10 }}
+                  overflow="hidden"
+                  opacity={isActive ? 1 : { base: 0, xl: 0.65 }}
                   boxShadow={isActive ? "0 40px 80px rgba(0,0,0,0.5)" : "none"}
                   position="relative"
-                  // overflow="hidden"
                   cursor={isActive ? "default" : "pointer"}
                   onClick={
                     isActive
@@ -150,14 +147,12 @@ export default function TestimonialsSection() {
                         : scrollNext
                   }
                   justifyContent={"center"}
-                  // my={"auto"}
                 >
                   <Stack
                     align={"start"}
                     gap={isActive ? { base: 6, xl: 9 } : 5}
                     h="100%"
                   >
-                    {/* Stars + quote */}
                     <Stack gap={isActive ? { base: 5, xl: 8 } : 5}>
                       <HStack justify="start">
                         <Stars
@@ -170,7 +165,7 @@ export default function TestimonialsSection() {
                         fontWeight="400"
                         fontSize={
                           isActive
-                            ? { base: "20px", xl: "32px" }
+                            ? { base: "18px", xl: "32px" }
                             : { base: "15px", xl: "20px" }
                         }
                         lineHeight={
@@ -237,7 +232,7 @@ export default function TestimonialsSection() {
                       zIndex={90}
                       style={{ WebkitTextStroke: "1px #2345EF" }}
                     >
-                      &ldquo;
+                      &ldquo; 
                     </Box>
                   )}
                 </Box>
@@ -250,7 +245,7 @@ export default function TestimonialsSection() {
           position="absolute"
           insetY={0}
           left={0}
-          w={{ base: "60px", md: "160px", xl: "260px" }}
+          w={{ base: "0", md: "160px", xl: "260px" }}
           pointerEvents="none"
           bg="linear-gradient(90deg, #000 30%, transparent 100%)"
         />
@@ -258,7 +253,7 @@ export default function TestimonialsSection() {
           position="absolute"
           insetY={0}
           right={0}
-          w={{ base: "60px", md: "160px", xl: "260px" }}
+          w={{ base: "0", md: "160px", xl: "260px" }}
           pointerEvents="none"
           bg="linear-gradient(270deg, #000 30%, transparent 100%)"
         />
@@ -268,9 +263,10 @@ export default function TestimonialsSection() {
         <Button
           aria-label="Previous testimonial"
           onClick={scrollPrev}
-          w={{ base: "52px", xl: "60px" }}
-          h={{ base: "52px", xl: "60px" }}
+          w={{ base: "50px", xl: "60px" }}
+          h={{ base: "50px", xl: "60px" }}
           minW="unset"
+          pb='5px'
           borderRadius="full"
           bg="rgba(255,255,255,0.08)"
           color="#FFFFFF"
