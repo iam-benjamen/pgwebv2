@@ -20,14 +20,18 @@ const Hero = () => {
       position="relative"
       minH={{ base: "100svh", md: "1017px" }}
       overflow="hidden"
+      display={{ base: "flex", md: "block" }}
+      flexDirection="column"
     >
       <Box
-        position="absolute"
-        left="50%"
-        style={{ transform: "translateX(-50%)" }}
-        top={{ base: "40%", md: "36%" }}
+        position={{ base: "relative", md: "absolute" }}
+        left={{ md: "50%" }}
+        transform={{ base: "none", md: "translateX(-50%)" }}
+        top={{ md: "36%" }}
         w={{ base: "95%", md: "90%" }}
-        h={{ base: "60%", md: "860px" }}
+        h={{ base: "280px", sm: "360px", md: "860px" }}
+        mx={{ base: "auto", md: "0" }}
+        order={{ base: 2 }}
         zIndex={0}
       >
         <Image
@@ -52,11 +56,15 @@ const Hero = () => {
         <Navbar />
 
         <Container maxW="100%" mx="auto" px={{ base: 4, md: 6 }}>
-          <Stack align="center" pt={{ base: 16, md: "11rem" }} gap={{ base: 3, md: "14px" }}>
+          <Stack
+            align="center"
+            pt={{ base: "9rem", md: "11rem" }}
+            gap={{ base: 3, md: "14px" }}
+          >
             <Heading
               fontFamily="'Monument Extended', sans-serif"
               fontWeight="800"
-              fontSize={{ base: "32px", sm: "40px", md: "48px" }}
+              fontSize={{ base: "30px", sm: "40px", md: "48px" }}
               lineHeight={{ base: "1.2", md: "60px" }}
               letterSpacing="-0.2px"
               textTransform="uppercase"
@@ -97,11 +105,10 @@ const Hero = () => {
             <Text
               fontFamily="var(--font-poppins)"
               fontWeight="400"
-              fontSize={{ base: "16px", md: "18px" }}
+              fontSize={{ base: "20px", md: "18px" }}
               lineHeight="150%"
               textAlign="center"
               color="#F2F0F0"
-              maxW="549px"
             >
               Turn your unbuilt project into a compelling sales experience
               <br />
@@ -114,6 +121,7 @@ const Hero = () => {
                 color="#FFFFFF"
                 h="63px"
                 px={6}
+                w={{ base: "100%", sm: "auto" }}
                 borderRadius="16px"
                 fontFamily="var(--font-poppins)"
                 fontWeight="500"
@@ -127,6 +135,7 @@ const Hero = () => {
                 variant="ghost"
                 color="#FFFFFF"
                 h="63px"
+                w={{ base: "100%", sm: "auto" }}
                 px={6}
                 borderRadius="16px"
                 fontFamily="var(--font-poppins)"

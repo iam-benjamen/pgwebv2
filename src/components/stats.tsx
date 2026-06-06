@@ -102,6 +102,7 @@ const Stats = () => {
       >
         <Box
           display={{ base: "grid", xl: "flex" }}
+          gridTemplateColumns={{ base: "1fr 1fr", xl: "unset" }}
           gap={{ base: 8, md: 10 }}
           justifyContent="space-between"
           alignItems="center"

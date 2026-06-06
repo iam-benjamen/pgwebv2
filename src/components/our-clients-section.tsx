@@ -104,7 +104,6 @@ export function OurClientsSection() {
           and sell more effectively
         </Text>
 
-        {/* Faded line — top */}
         <Box
           h="1px"
           maxW={{ base: "80%", xl: "600px" }}
@@ -115,7 +114,6 @@ export function OurClientsSection() {
           }}
         />
 
-        {/* Marquee */}
         <Box position="relative" overflow="hidden" py={{ base: "16px", xl: "19px" }}>
           <div className="clients-track">
             {[...logos, ...logos].map((logo, i) => (
@@ -135,7 +133,6 @@ export function OurClientsSection() {
             ))}
           </div>
 
-          {/* Fade — left */}
           <div
             aria-hidden="true"
             style={{
@@ -151,7 +148,6 @@ export function OurClientsSection() {
             }}
           />
 
-          {/* Fade — right */}
           <div
             aria-hidden="true"
             style={{
@@ -168,7 +164,6 @@ export function OurClientsSection() {
           />
         </Box>
 
-        {/* Faded line — bottom */}
         <Box
           h="1px"
           maxW={{ base: "80%", xl: "600px" }}

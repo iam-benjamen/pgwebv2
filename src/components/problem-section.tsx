@@ -38,7 +38,7 @@ const ProblemSection = () => {
               textAlign="center"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="700"
-              fontSize={{ base: "2.35rem", md: "3rem" }}
+              fontSize={{ base: "2rem", md: "3rem" }}
               lineHeight={{ base: "1.08", md: "1.2" }}
               letterSpacing="-0.6px"
             >
