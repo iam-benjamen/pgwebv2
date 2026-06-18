@@ -38,11 +38,9 @@ export default function FloatingBadge() {
       >
         <svg width="100%" height="100%" viewBox="0 0 175 175" style={{ position: "absolute", inset: 0 }}>
           <defs>
-            {/* Clockwise from 12 o'clock */}
             <path id="btc" d="M87.5,24 a63.5,63.5 0 1,1 -0.001,0" />
           </defs>
 
-          {/* Text — spacing="exact" prevents browser from stretching to fill the path */}
           <text fill="white" fontFamily="Urbanist, sans-serif" fontWeight="600" fontSize="10.5" letterSpacing="1">
             <textPath href="#btc" startOffset="5%" spacing="exact">
               DISCOVER YOUR DREAM
