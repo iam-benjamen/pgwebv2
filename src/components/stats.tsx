@@ -3,7 +3,7 @@ import { Box, Container, HStack, Stack, Text } from "@chakra-ui/react";
 const statItems = [
   {
     value: (
-      <HStack gap="1" color="#ffffff">
+      <HStack gap="1" color="#ffffff" align="center">
         <Text
           as="span"
           fontSize={{ base: "2.5rem", md: "3.5rem" }}
@@ -35,7 +35,7 @@ const statItems = [
         </Text>
       </HStack>
     ),
-    label: "DEVELOPMENT VALUE\nSUPPORTED",
+    label: "DEVELOPMENT VALUE",
   },
   {
     value: (
@@ -87,7 +87,7 @@ const statItems = [
         </Text>
       </HStack>
     ),
-    label: "COMBINED LEADERSHIP\nTEAM EXPERIENCE",
+    label: "TEAM EXPERIENCE",
   },
 ] as const;
 
@@ -95,7 +95,7 @@ const Stats = () => {
   return (
     <Box as="section" bg="#1C1C1C">
       <Container
-        w={"93%"}
+        w={"90%"}
         maxW={"100%"}
         margin="0 auto"
         py={{ base: 10, md: 8 }}

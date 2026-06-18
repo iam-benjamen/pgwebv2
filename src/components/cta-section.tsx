@@ -17,30 +17,30 @@ const DefaultHeading = () => (
     fontWeight="400"
     fontSize={{ base: "1.75rem", md: "2.4rem", xl: "40px" }}
     lineHeight="1.1"
-    letterSpacing="-0.01em"
+    letterSpacing="-0.02em"
     color="#E9E9E9"
   >
     If Your Project{" "}
     <Box as="span" display="inline-block" position="relative">
       Needs to Sell
-      <Box
+      {/* <Box
       display={{base:"none", md:"block"}}
         position="absolute"
         left="50%"
-        bottom={{ base: "-6px", md: "-8px" }}
+        bottom={{ base: "-6px", md: "-5px" }}
         transform="translateX(-50%)"
-        w={{ base: "180px", md: "240px", xl: "345px" }}
+        w={{ base: "180px", md: "240px", xl: "545px" }}
         h={{ base: "4px", md: "5px", xl: "6px" }}
         pointerEvents="none"
       >
         <Image
-          src="/assets/cta-curved-line.svg"
+          src="/assets/cta-curved-line.png"
           alt=""
           fill
-          sizes="345px"
+          sizes="545px"
           style={{ objectFit: "contain" }}
         />
-      </Box>
+      </Box> */}
     </Box>
     <br />
     Not Just Look Good

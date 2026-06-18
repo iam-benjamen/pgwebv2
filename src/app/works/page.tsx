@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Box,
   Button,
@@ -18,80 +18,60 @@ import FloatingBadge from "@/components/floating-badge";
 
 const filters = [
   "All",
-  "CS Studios",
+  // "Case Studies",
   "Residential",
   "Commercial",
   "Interior",
-  "Animation",
-  "AV / Lighting",
-  "Virtual Tours",
+  // "Animation",
+  // "AV / Lighting",
+  // "Virtual Tours",
 ];
 
-const projects = [
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "3/4",
-  },
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "4/5",
-  },
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "3/4",
-  },
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "4/5",
-  },
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "2/5",
-  },
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "3/4",
-  },
-  {
-    title: "AJUBA",
-    credit: "By Kayceelaw Properties",
-    image: "/assets/featured-works/featured.png",
-    ratio: "4/5",
-  },
-];
+const FILTER_TO_API: Record<string, string> = {
+  All: "all",
+  Residential: "residential",
+  Commercial: "commercial",
+  Interior: "interior",
+};
 
-function ProjectCard({
-  title,
-  image,
-  ratio = "4/5",
-}: {
-  title: string;
-  credit: string;
-  image: string;
-  ratio?: string;
-}) {
+const SKELETON_RATIOS = ["3/4", "4/5", "4/5", "3/4", "4/5", "3/4", "4/5", "4/5"];
+
+type WorkImage = { url: string; ratio: string };
+
+function noRightClick(e: React.MouseEvent) {
+  e.preventDefault();
+}
+
+function SkeletonCard({ ratio }: { ratio: string }) {
+  return (
+    <Box
+      w="100%"
+      style={{ aspectRatio: ratio }}
+      borderRadius="4px"
+      className="works-skeleton"
+    />
+  );
+}
+
+function ProjectCard({ url, ratio, onClick }: WorkImage & { onClick: () => void }) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <Box
       position="relative"
       w="100%"
       style={{ aspectRatio: ratio }}
       overflow="hidden"
+      bg="rgba(255,255,255,0.05)"
+      cursor="pointer"
+      onClick={onClick}
     >
       <img
-        src={image}
-        alt={title}
+        src={url}
+        alt=""
+        loading="lazy"
+        draggable={false}
+        onLoad={() => setLoaded(true)}
+        onContextMenu={noRightClick}
         style={{
           position: "absolute",
           inset: 0,
@@ -99,14 +79,116 @@ function ProjectCard({
           height: "100%",
           objectFit: "cover",
           display: "block",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.4s ease",
+          userSelect: "none",
         }}
       />
     </Box>
   );
 }
 
+function Lightbox({ image, onClose }: { image: WorkImage; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  // Swap w_800 → w_1600 for a sharper full-screen view
+  const fullUrl = image.url.replace("w_800", "w_1600");
+
+  return (
+    <Box
+      position="fixed"
+      inset={0}
+      zIndex={9999}
+      bg="rgba(0,0,0,0.92)"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      onClick={onClose}
+      cursor="zoom-out"
+      style={{ backdropFilter: "blur(6px)", animation: "lbFadeIn 0.2s ease" }}
+    >
+      {/* Close button */}
+      <Box
+        position="absolute"
+        top={{ base: 4, md: 6 }}
+        right={{ base: 4, md: 6 }}
+        w="40px"
+        h="40px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        borderRadius="full"
+        bg="rgba(255,255,255,0.1)"
+        color="white"
+        fontSize="20px"
+        fontWeight="300"
+        cursor="pointer"
+        _hover={{ bg: "rgba(255,255,255,0.2)" }}
+        onClick={onClose}
+        zIndex={1}
+        style={{ lineHeight: 1 }}
+      >
+        ✕
+      </Box>
+
+      {/* Image — stopPropagation so clicking on it doesn't close */}
+      <Box
+        maxW="90vw"
+        maxH="90vh"
+        onClick={(e) => e.stopPropagation()}
+        cursor="default"
+        style={{ animation: "lbScaleIn 0.22s ease" }}
+      >
+        <img
+          src={fullUrl}
+          alt=""
+          draggable={false}
+          onContextMenu={noRightClick}
+          style={{
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+            width: "auto",
+            height: "auto",
+            objectFit: "contain",
+            display: "block",
+            borderRadius: "4px",
+            userSelect: "none",
+          }}
+        />
+      </Box>
+    </Box>
+  );
+}
+
 export default function WorksPage() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [images, setImages] = useState<WorkImage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState<WorkImage | null>(null);
+
+  const closeLight = useCallback(() => setSelected(null), []);
+
+  useEffect(() => {
+    const apiFilter = FILTER_TO_API[activeFilter];
+    if (!apiFilter) {
+      setImages([]);
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    fetch(`/api/works?filter=${apiFilter}`)
+      .then((r) => r.json())
+      .then((data) => setImages(data.images ?? []))
+      .finally(() => setLoading(false));
+  }, [activeFilter]);
 
   return (
     <Box bg="#050816" minH="100svh" color="#F5F7FA">
@@ -157,27 +239,6 @@ export default function WorksPage() {
                 <br />
                 Sold &amp; Delivered
               </Heading>
-
-              <Box
-                display={{ base: "none", md: "block" }}
-                position="relative"
-                w={{ base: "260px", xl: "479px" }}
-                h="9px"
-                mt="-16px"
-                ml="2rem"
-                flexShrink={0}
-              >
-                <Image
-                  src="/assets/works/Curved-Line.png"
-                  alt=""
-                  fill
-                  sizes="479px"
-                  style={{
-                    objectFit: "contain",
-                    objectPosition: "left center",
-                  }}
-                />
-              </Box>
 
               <Text
                 fontFamily="var(--font-poppins), sans-serif"
@@ -259,16 +320,56 @@ export default function WorksPage() {
             .works-masonry { columns: 2; column-gap: 12px; }
             @media (min-width: 1280px) { .works-masonry { columns: 4; } }
             .works-masonry-item { break-inside: avoid; margin-bottom: 12px; }
+            @keyframes shimmer {
+              0% { background-position: -200% 0; }
+              100% { background-position: 200% 0; }
+            }
+            .works-skeleton {
+              background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+              background-size: 200% 100%;
+              animation: shimmer 1.6s infinite;
+            }
+            @keyframes lbFadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            @keyframes lbScaleIn {
+              from { transform: scale(0.95); opacity: 0; }
+              to { transform: scale(1); opacity: 1; }
+            }
           `}</style>
-          <div className="works-masonry">
-            {projects.map((p, i) => (
-              <div key={i} className="works-masonry-item">
-                <ProjectCard {...p} />
-              </div>
-            ))}
-          </div>
+
+          {loading ? (
+            <div className="works-masonry">
+              {SKELETON_RATIOS.map((ratio, i) => (
+                <div key={i} className="works-masonry-item">
+                  <SkeletonCard ratio={ratio} />
+                </div>
+              ))}
+            </div>
+          ) : images.length === 0 ? (
+            <Box
+              color="rgba(255,255,255,0.3)"
+              textAlign="center"
+              py={20}
+              fontFamily="var(--font-poppins), sans-serif"
+              fontSize="15px"
+            >
+              No images yet for this category.
+            </Box>
+          ) : (
+            <div className="works-masonry">
+              {images.map((img, i) => (
+                <div key={i} className="works-masonry-item">
+                  <ProjectCard {...img} onClick={() => setSelected(img)} />
+                </div>
+              ))}
+            </div>
+          )}
         </Box>
       </Box>
+
+      {selected && <Lightbox image={selected} onClose={closeLight} />}
 
       <CtaSection
         buttonText="Discover the Process"

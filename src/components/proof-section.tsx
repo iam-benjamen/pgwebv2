@@ -55,7 +55,7 @@ export default function ProofSection() {
 
       {/* Cards grid */}
       <Box
-        w="93%"
+        w="80%"
         mx="auto"
         maxW="100%"
         display="grid"

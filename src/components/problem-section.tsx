@@ -42,7 +42,7 @@ const ProblemSection = () => {
               lineHeight={{ base: "1.08", md: "1.2" }}
               letterSpacing="-0.6px"
             >
-              Most projects don&apos;t <br /> struggle because of <br /> bad
+              Most projects don&apos;t struggle because of bad
               design.
             </Heading>
 

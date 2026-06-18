@@ -27,7 +27,7 @@ export default function Home() {
       <FeaturedWorksSection />
       <TestimonialsSection />
       <InteriorDesignersSection />
-      <CtaSection />
+      <CtaSection minH={{ base: "300px", md: "380px", xl: "420px" }} />
       <Footer />
     </Box>
   );

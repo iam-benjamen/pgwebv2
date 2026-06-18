@@ -134,7 +134,6 @@ export default function TestimonialsSection() {
                   color={isActive ? "#000000" : "rgba(255,255,255,0.65)"}
                   px={isActive ? { base: 6, xl: 12 } : { base: 0, xl: 9 }}
                   py={isActive ? { base: 6, xl: 16 } : { base: 0, xl: 10 }}
-                  overflow="hidden"
                   opacity={isActive ? 1 : { base: 0, xl: 0.65 }}
                   boxShadow={isActive ? "0 40px 80px rgba(0,0,0,0.5)" : "none"}
                   position="relative"
@@ -229,7 +228,7 @@ export default function TestimonialsSection() {
                       transform="rotate(180deg)"
                       pointerEvents="none"
                       userSelect="none"
-                      zIndex={90}
+                      zIndex={999}
                       style={{ WebkitTextStroke: "1px #2345EF" }}
                     >
                       &ldquo; 

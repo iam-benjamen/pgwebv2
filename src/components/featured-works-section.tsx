@@ -116,7 +116,7 @@ export default function FeaturedWorksSection() {
       </Heading>
 
       <Box
-        w="93%"
+        w="80%"
         mx="auto"
         maxW="100%"
         display="grid"
