@@ -6,13 +6,13 @@ import Image from "next/image";
 export default function FloatingBadge() {
   return (
     <Box
+      zIndex={100}
       position="fixed"
-      right={{ base: "20px", md: "4rem" }}
+      cursor="pointer"
+      right={{ base: "20px", md: "3.25rem" }}
       bottom={{ base: "24px", md: "40px" }}
       w={{ base: "120px", md: "175px" }}
       h={{ base: "120px", md: "175px" }}
-      zIndex={100}
-      cursor="pointer"
       _hover={{ transform: "scale(1.06)" }}
       transition="transform 0.3s ease"
     >
@@ -23,7 +23,6 @@ export default function FloatingBadge() {
         }
       `}</style>
 
-      {/* Spinning outer ring */}
       <Box
         position="absolute"
         inset={0}
@@ -36,37 +35,39 @@ export default function FloatingBadge() {
           animation: "badgeSpin 18s linear infinite",
         }}
       >
-        <svg width="100%" height="100%" viewBox="0 0 175 175" style={{ position: "absolute", inset: 0 }}>
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 175 175"
+          style={{ position: "absolute", inset: 0 }}
+        >
           <defs>
             <path id="btc" d="M87.5,24 a63.5,63.5 0 1,1 -0.001,0" />
           </defs>
 
-          <text fill="white" fontFamily="Urbanist, sans-serif" fontWeight="600" fontSize="10.5" letterSpacing="1">
+          <text
+            fill="white"
+            fontFamily="Urbanist, sans-serif"
+            fontWeight="600"
+            fontSize="10.5"
+            letterSpacing="1"
+          >
             <textPath href="#btc" startOffset="5%" spacing="exact">
               DISCOVER YOUR DREAM
             </textPath>
           </text>
 
-          <text fill="white" fontFamily="Urbanist, sans-serif" fontWeight="600" fontSize="10.5" letterSpacing="1">
-            <textPath href="#btc" startOffset="67%" spacing="exact">
+          <text
+            fill="white"
+            fontFamily="Urbanist, sans-serif"
+            fontWeight="600"
+            fontSize="10.5"
+            letterSpacing="1"
+          >
+            <textPath href="#btc" startOffset="66%" spacing="exact">
               LAUNCH NOW
             </textPath>
           </text>
-
-          {/*
-            Gap 1 centre (before LAUNCH NOW): ~48% → (87.0, 151.0), rot 173°
-            Gap 2 centre (after  LAUNCH NOW): ~91% → (58.7,  30.9), rot 328°
-          */}
-          {/* <polygon
-            points="0,-4.5 3.5,2.5 -3.5,2.5"
-            fill="white"
-            transform="translate(87.0, 151.0) rotate(173)"
-          />
-          <polygon
-            points="0,-4.5 3.5,2.5 -3.5,2.5"
-            fill="white"
-            transform="translate(58.7, 30.9) rotate(328)"
-          /> */}
         </svg>
       </Box>
 
@@ -84,13 +85,14 @@ export default function FloatingBadge() {
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           border: "1.5px solid rgba(255,255,255,0.2)",
-          boxShadow: "inset 0 0 24px rgba(255,255,255,0.07), 0 0 28px rgba(255,255,255,0.04)",
+          boxShadow:
+            "inset 0 0 24px rgba(255,255,255,0.07), 0 0 28px rgba(255,255,255,0.04)",
         }}
       >
         <Box
-          position="absolute"
           top="50%"
           left="50%"
+          position="absolute"
           w={{ base: "36px", md: "45px" }}
           h={{ base: "31px", md: "39px" }}
           style={{ transform: "translate(-65%, -55%) rotate(32.12deg)" }}
