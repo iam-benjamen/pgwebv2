@@ -30,6 +30,7 @@ async function getImagesForFolder(folderPath: string): Promise<WorkImage[]> {
     prefix: folderPath + "/",
     max_results: 100,
     resource_type: "image",
+    direction: "asc",
   });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return result.resources.map((r: any) => ({
