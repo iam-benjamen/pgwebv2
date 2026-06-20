@@ -24,14 +24,13 @@ function randomSample<T>(arr: T[], n: number): T[] {
 type WorkImage = { url: string; ratio: string };
 
 async function getImagesForFolder(folderPath: string): Promise<WorkImage[]> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any  
-  const result: any = await cloudinary.api.resources({
-    type: "upload",
-    prefix: folderPath + "/",
-    max_results: 100,
-    resource_type: "image",
-    direction: "asc",
-  });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const result: any = await cloudinary.search
+    .expression(`folder:"${folderPath}" AND resource_type:image`)
+    .sort_by("public_id", "asc")
+    .max_results(100)
+    .execute();
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return result.resources.map((r: any) => ({
     url: optimizeUrl(r.secure_url as string),

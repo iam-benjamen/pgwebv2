@@ -336,6 +336,7 @@ export default function InteractiveConfiguratorsPage() {
       </Box>
 
       <CtaSection
+        minH={{ base: "300px", md: "380px", xl: "420px" }}
         heading={
           <Heading
             fontFamily="'Monument Extended', var(--font-poppins), sans-serif"

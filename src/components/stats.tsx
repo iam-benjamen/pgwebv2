@@ -58,10 +58,7 @@ const statItems = [
         fontSize={{ base: "3rem", md: "3.75rem" }}
         lineHeight="0.8"
       >
-        U.S.{" "}
-        <Box as="span" color="#FFFFFF">
-          + Int'l
-        </Box>
+        Global
       </Text>
     ),
     label: "MARKET REACH",

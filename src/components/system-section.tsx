@@ -49,7 +49,7 @@ const patternStyles = {
 
 const SystemSection = () => {
   return (
-    <Box as="section" position="relative" overflow="hidden" bg="#1B1B1B" py={{ base: 20, md: 24, xl: 28 }}>
+    <Box as="section" position="relative" overflow="hidden" bg="#1B1B1B" py={{ base: 16, md: 24, xl: 28 }}>
       <Box
         position="absolute"
         insetX="10%"
@@ -67,7 +67,7 @@ const SystemSection = () => {
               color="#FFFFFF"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="700"
-              fontSize={{ base: "2.5rem", md: "3.25rem", xl: "3.5rem" }}
+              fontSize={{ base: "2rem", md: "3.25rem", xl: "3.5rem" }}
               lineHeight={{ base: "1.08", md: "1.14", xl: "68px" }}
               letterSpacing="-0.5px"
             >
@@ -78,7 +78,7 @@ const SystemSection = () => {
               color="#9B9B9B"
               fontFamily="var(--font-poppins), sans-serif"
               fontWeight="700"
-              fontSize={{ base: "2.5rem", md: "3.25rem", xl: "3.5rem" }}
+              fontSize={{ base: "2rem", md: "3.25rem", xl: "3.5rem" }}
               lineHeight={{ base: "1.08", md: "1.14", xl: "68px" }}
               letterSpacing="-0.5px"
               maxW={{ base: "full", lg: "540px" }}

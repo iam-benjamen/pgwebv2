@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
     skipSnaps: false,
   });
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;

@@ -12,7 +12,6 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Solutions", href: "#solutions" },
   { label: "Works", href: "/works" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const solutionsDropdown = [

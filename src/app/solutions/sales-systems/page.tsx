@@ -49,7 +49,6 @@ export default function SalesSystemsPage() {
     <Box bg="#050816" minH="100svh" color="#F5F7FA">
       <Navbar />
 
-      {/* ── Hero ────────────────────────────────────────────────── */}
       <Box
         as="section"
         position="relative"
@@ -60,7 +59,6 @@ export default function SalesSystemsPage() {
         flexDirection="column"
         justifyContent="flex-end"
       >
-        {/* Background image — black space on left, visuals on right */}
         <Box position="absolute" inset={0}>
           <Image
             src="/assets/sales-system-page/hero-background.png"
@@ -131,7 +129,7 @@ export default function SalesSystemsPage() {
             color="#FFFFFF"
             mb={{ base: 12, xl: "80px" }}
           >
-            Everything You Need to{" "} <br/>
+            Everything You Need to <br />
             <Box as="span" color="#2345EF" fontStyle="italic">
               Sell Smarter
             </Box>
@@ -142,7 +140,6 @@ export default function SalesSystemsPage() {
             gap={{ base: 10, xl: "80px" }}
             align={{ base: "flex-start", lg: "center" }}
           >
-            {/* Left — text + bullets */}
             <Stack gap={6} maxW={{ base: "100%", lg: "45%" }} flexShrink={0}>
               <Text
                 fontFamily="var(--font-poppins), sans-serif"
@@ -151,7 +148,8 @@ export default function SalesSystemsPage() {
                 lineHeight="120%"
                 color="#FFFFFF"
               >
-                Every component your <br/>project needs to{" "}
+                Every component your <br />
+                project needs to{" "}
                 <Box as="span" color="#2345EF" fontStyle="italic">
                   sell.
                 </Box>
@@ -164,9 +162,9 @@ export default function SalesSystemsPage() {
                 lineHeight="150%"
                 color="#C1C1C1"
               >
-                We build complete virtual sales galleries and interactive systems
-                that allow buyers and investors to fully experience your project
-                before it exists.
+                We build complete virtual sales galleries and interactive
+                systems that allow buyers and investors to fully experience your
+                project before it exists.
               </Text>
 
               <Stack gap={0}>
@@ -215,7 +213,6 @@ export default function SalesSystemsPage() {
               </Box>
             </Stack>
 
-            {/* Right — illustration */}
             <Box flex="1" borderRadius="20px" overflow="hidden">
               <Image
                 src="/assets/sales-system-page/ILLUSTRATION.png"
@@ -229,7 +226,6 @@ export default function SalesSystemsPage() {
         </Box>
       </Box>
 
-      {/* ── Outcomes ────────────────────────────────────────────── */}
       <Box as="section" bg="#222222" py={{ base: 16, xl: "100px" }}>
         <Box w="93%" mx="auto">
           <Stack align="center" gap={3} mb={{ base: 12, xl: "80px" }}>
@@ -253,13 +249,19 @@ export default function SalesSystemsPage() {
               color="#F2F0F0"
             >
               Shorter{" "}
-              <Box as="span" color="#2345EF" fontStyle="italic">cycles.</Box>
+              <Box as="span" color="#2345EF" fontStyle="italic">
+                cycles.
+              </Box>
               <br />
               Stronger{" "}
-              <Box as="span" color="#2345EF" fontStyle="italic">confidence.</Box>
+              <Box as="span" color="#2345EF" fontStyle="italic">
+                confidence.
+              </Box>
               <br />
               Higher{" "}
-              <Box as="span" color="#2345EF" fontStyle="italic">commitment.</Box>
+              <Box as="span" color="#2345EF" fontStyle="italic">
+                commitment.
+              </Box>
             </Text>
           </Stack>
 
@@ -330,8 +332,8 @@ export default function SalesSystemsPage() {
         </Box>
       </Box>
 
-      {/* ── CTA ─────────────────────────────────────────────────── */}
       <CtaSection
+        minH={{ base: "300px", md: "380px", xl: "420px" }}
         heading={
           <Heading
             fontFamily="'Monument Extended', var(--font-poppins), sans-serif"
@@ -345,23 +347,6 @@ export default function SalesSystemsPage() {
             Ready to Build Your{" "}
             <Box as="span" display="inline-block" position="relative">
               Sales System?
-              <Box
-                position="absolute"
-                left="50%"
-                bottom={{ base: "-6px", md: "-1px" }}
-                transform="translateX(-50%)"
-                w={{ base: "180px", md: "240px", xl: "345px" }}
-                h={{ base: "4px", md: "5px", xl: "6px" }}
-                pointerEvents="none"
-              >
-                <Image
-                  src="/assets/cta-curved-line.svg"
-                  alt=""
-                  fill
-                  sizes="345px"
-                  style={{ objectFit: "contain" }}
-                />
-              </Box>
             </Box>
           </Heading>
         }
