@@ -62,7 +62,7 @@ export default function AboutPage() {
 
               <Box
                 position="relative"
-                display={{base:"none", md:"block"}}
+                display={{ base: "none", md: "block" }}
                 w={{ base: "260px", xl: "479px" }}
                 h="9px"
                 mt="-16px"
@@ -151,9 +151,8 @@ export default function AboutPage() {
 
           <Stack gap={6} flex="1">
             {[
-              "We saw the same pattern repeat across projects: developers with strong visions, beautiful designs, and real demand, but no system to communicate that clearly enough to move buyers, investors, and stakeholders to action.",
-              "So we built one. Not a rendering studio. Not a marketing agency. A decision systems company; one that combines architectural intelligence, visualization technology, and commercial strategy to create environments where real estate projects get sold.",
-              "Based in the U.S. Operating nationally and internationally. $200M+ in development value supported. Forbes project credit. PGStudio is built from the ground up to serve the developers, builders, and investment groups who move real estate forward.",
+              "Developers often have strong visions, great designs, and real demand, but lack the systems needed to move buyers, investors, and stakeholders to action.",
+              "PGStudio is a decision systems company that combines architectural intelligence, visualization technology, and commercial strategy to help real estate projects secure support, funding, and sales. Based in the U.S. and operating globally, we&apos;ve supported $200M+ in development value and contributed to Forbes-recognized projects.",
             ].map((p, i) => (
               <Text
                 key={i}
@@ -197,7 +196,7 @@ export default function AboutPage() {
                 lineHeight="30px"
                 color="#EFF0FE"
               >
-                Three beliefs that drive everything we build.
+                Our work is drive by three beliefs.
               </Text>
             </Stack>
 
@@ -209,14 +208,12 @@ export default function AboutPage() {
               color="#FFFFFF"
               flex="1"
             >
-              Beautiful design that doesn't drive a decision is just decoration.
-              We operate under a strict operational standard designed to protect
-              your carrying costs, secure investor confidence, and sell your
-              project before construction begins.
+              Beautiful design that doesn't drive decisions is decoration.
+              Everything we build is designed to accelerate approvals, attract
+              capital, and drive sales.
             </Text>
           </Flex>
 
-          {/* Three cards */}
           <Box
             display="grid"
             gridTemplateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
@@ -224,15 +221,15 @@ export default function AboutPage() {
             {[
               {
                 title: "Decisions Over Visuals",
-                body: "Every asset we produce is judged by one standard: does it move someone toward a decision? Beautiful visuals that don't convert are decoration. We don't do decoration.",
+                body: "If it doesn't influence action, we don't build it.",
               },
               {
                 title: "Systems Over Deliverables",
-                body: "A single rendering is a moment. A system is infrastructure. We build the infrastructure that keeps selling your project long after the first meeting ends.",
+                body: "We build sales ecosystem, not one-off assets",
               },
               {
                 title: "Revenue Over Aesthetics",
-                body: "Great design is a means to an end. The end is revenue—faster closings, stronger investor confidence, and projects that sell before construction begins.",
+                body: "Revenue is the metric. Design is the vehicle.",
               },
             ].map((card, i, arr) => (
               <Box
@@ -250,6 +247,7 @@ export default function AboutPage() {
                 }}
                 px={{ base: 6, xl: "47px" }}
                 py={{ base: 8, xl: "39px" }}
+                h={"max-content"}
               >
                 <Text
                   fontFamily="var(--font-poppins), sans-serif"
@@ -366,11 +364,10 @@ export default function AboutPage() {
               >
                 As a real estate strategist and visualization expert, Promise
                 founded PGStudio on the conviction that successful developments
-                require more than strong design — they demand highly effective
-                market positioning. Under his leadership, the studio partners
-                with developers, builders and investment groups across the
-                United States and international market to deliver
-                institutional-grade visualizations, capital raise materials, and
+                require more than design—they require strong market positioning.
+                The studio works with developers and investment groups across
+                the U.S. and international markets, delivering
+                institutional-grade visualizations, capital-raise materials, and
                 strategic sales infrastructure.
               </Text>
               <Text
@@ -380,12 +377,10 @@ export default function AboutPage() {
                 lineHeight="150%"
                 color="#FFFFFF"
               >
-                These systems are engineered to de-risk complex projects,
-                accelerate decision-making, and increase market absorption.
-                Driven by a global vision, Promise is scaling PGStudio into a
-                trusted strategic partner for developers and private capital,
-                transforming unbuilt architectural concepts into highly
-                investable, market-ready assets.
+                These systems de-risk projects, speed up decision-making, and
+                improve market absorption. With a global focus, PGStudio turns
+                early-stage architectural concepts into investable, market-ready
+                assets for developers and private capital.
               </Text>
             </Stack>
           </Flex>
@@ -509,7 +504,7 @@ export default function AboutPage() {
               "MADELBA",
               "PYTHAGORAS",
               "KIRUBEL",
-              "HJV",
+              "IMMERSA",
             ].map((name) => (
               <Box
                 key={name}
@@ -573,7 +568,7 @@ export default function AboutPage() {
                 <Box
                   position="absolute"
                   right={{ base: "16px", xl: "32px" }}
-                  bottom={{base:"-2.5rem" ,md:"-3.5rem"}}
+                  bottom={{ base: "-2.5rem", md: "-3.5rem" }}
                   fontFamily="var(--font-poppins), sans-serif"
                   fontWeight="600"
                   fontSize={{ base: "160px", xl: "193px" }}
@@ -667,7 +662,7 @@ export default function AboutPage() {
       </Box>
 
       <CtaSection
-      minH={{ base: "300px", md: "380px", xl: "420px" }}
+        minH={{ base: "300px", md: "380px", xl: "420px" }}
         heading={
           <Heading
             fontFamily="'Monument Extended', var(--font-poppins), sans-serif"
@@ -679,7 +674,7 @@ export default function AboutPage() {
           >
             Let's Talk About
             <br />
-            Your Project?
+            Your Project
           </Heading>
         }
         buttonText="Book a Discovery Call"

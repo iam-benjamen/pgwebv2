@@ -45,17 +45,29 @@ export default function FloatingBadge() {
             <path id="btc" d="M87.5,24 a63.5,63.5 0 1,1 -0.001,0" />
           </defs>
 
+          <path
+            d="M9.76064 11.0094L8.04918 -1.19542e-05L5.5691 5.02326L0.000563622 5.63569L9.76064 11.0094Z"
+            fill="white"
+            transform="translate(91.35, 25.44) rotate(120) translate(-15, -10.5)"
+          />
+
           <text
             fill="white"
             fontFamily="Urbanist, sans-serif"
             fontWeight="600"
-            fontSize="10.5"
+            fontSize="10"
             letterSpacing="1"
           >
-            <textPath href="#btc" startOffset="5%" spacing="exact">
-              DISCOVER YOUR DREAM
+            <textPath href="#btc" startOffset="5.5%" spacing="exact">
+              Claim Free Strategy Session
             </textPath>
           </text>
+
+          <path
+            d="M-0.000869546 11.0094L1.71059 -1.19542e-05L4.19066 5.02326L9.7592 5.63569L-0.000869546 11.0094Z"
+            fill="white"
+            transform="translate(60.49, 144.97) rotate(90) translate(-26, 26.5)"
+          />
 
           <text
             fill="white"
@@ -64,7 +76,7 @@ export default function FloatingBadge() {
             fontSize="10.5"
             letterSpacing="1"
           >
-            <textPath href="#btc" startOffset="66%" spacing="exact">
+            <textPath href="#btc" startOffset="70%" spacing="exact">
               LAUNCH NOW
             </textPath>
           </text>

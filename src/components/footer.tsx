@@ -43,12 +43,36 @@ const footerGroups = [
 ] as const;
 
 const socialLinks = [
-  { label: "Facebook", href: "https://facebook.com", icon: "/assets/social-media/Facebook.svg" },
-  { label: "Instagram", href: "https://instagram.com", icon: "/assets/social-media/Instagram.svg" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "/assets/social-media/LinkedIn.svg" },
-  { label: "YouTube", href: "https://youtube.com", icon: "/assets/social-media/YouTube.svg" },
-  { label: "TikTok", href: "https://tiktok.com", icon: "/assets/social-media/Tiktok.svg" },
-  { label: "Twitter", href: "https://x.com", icon: "/assets/social-media/Twitter.svg" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/thepgstudios",
+    icon: "/assets/social-media/Facebook.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/thepgstudios",
+    icon: "/assets/social-media/Instagram.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/thepgstudios",
+    icon: "/assets/social-media/LinkedIn.svg",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@thepgstudios",
+    icon: "/assets/social-media/YouTube.svg",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@thepgstudios",
+    icon: "/assets/social-media/Tiktok.svg",
+  },
+  {
+    label: "Twitter",
+    href: "https://x.com/thepgstudios",
+    icon: "/assets/social-media/Twitter.svg",
+  },
 ] as const;
 
 const Footer = () => {

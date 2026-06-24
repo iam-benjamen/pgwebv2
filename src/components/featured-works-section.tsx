@@ -22,7 +22,12 @@ function WorkCard({ title, credit, image }: { title: string; credit: string; ima
       <img
         src={image}
         alt={title}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
       />
 
       <Box
@@ -54,11 +59,8 @@ function WorkCard({ title, credit, image }: { title: string; credit: string; ima
         }}
         border="1px solid rgba(255, 255, 255, 0.18)"
         boxShadow="0 4px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
-        style={{
-          background: "rgba(255, 255, 255, 0.05)",
-          backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
-        }}
+        backdropFilter="auto"
+        backdropBlur="2px"
       >
         <Box
           position="absolute"

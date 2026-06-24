@@ -9,15 +9,15 @@ import { useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Solutions", href: "#solutions" },
   { label: "Works", href: "/works" },
+  { label: "About", href: "/about" },
 ];
 
 const solutionsDropdown = [
   { label: "Interactive Configurators", href: "/solutions/interactive-configurators", letterSpacing: "-0.18px" },
   { label: "Sales Systems", href: "/solutions/sales-systems", letterSpacing: undefined },
-  { label: "Visual Systems", href: "#solutions", letterSpacing: "-0.18px" },
+  { label: "Visual Systems", href: "/solutions/visual-system", letterSpacing: "-0.18px" },
 ];
 
 const glassStyle = {
@@ -158,7 +158,7 @@ export function Navbar() {
                 key={item.label}
                 asChild
                 color={isActive ? "#F1F1F1" : "#9B9B9B"}
-                fontSize={isActive ? "18px" : "14px"}
+                fontSize={isActive ? "16px" : "14px"}
                 fontWeight="500"
                 lineHeight="150%"
                 transition="color 0.2s ease"

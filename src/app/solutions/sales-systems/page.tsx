@@ -118,7 +118,7 @@ export default function SalesSystemsPage() {
       </Box>
 
       <Box as="section" bg="#121212" py={{ base: 16, xl: "100px" }}>
-        <Box w="93%" mx="auto">
+        <Box w="85%" mx="auto">
           <Text
             fontFamily="var(--font-poppins), sans-serif"
             fontWeight="700"
@@ -216,7 +216,7 @@ export default function SalesSystemsPage() {
             <Box flex="1" borderRadius="20px" overflow="hidden">
               <Image
                 src="/assets/sales-system-page/ILLUSTRATION.png"
-                alt="Sales system features overview"
+                alt="Sales system illustration"
                 width={147}
                 height={61}
                 style={{ width: "100%", height: "auto", display: "block" }}
@@ -344,13 +344,13 @@ export default function SalesSystemsPage() {
             color="#E9E9E9"
             textAlign="center"
           >
-            Ready to Build Your{" "}
+            Turn your vision into Buyer
             <Box as="span" display="inline-block" position="relative">
-              Sales System?
+              Confidence
             </Box>
           </Heading>
         }
-        buttonText="Book a Strategy Call"
+        buttonText="Build Your System"
       />
 
       <Footer />

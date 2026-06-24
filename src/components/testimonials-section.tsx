@@ -63,6 +63,7 @@ export default function TestimonialsSection() {
     align: "center",
     containScroll: false,
     skipSnaps: false,
+    startIndex: 1,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -124,11 +125,11 @@ export default function TestimonialsSection() {
                   }
                   minH={
                     isActive
-                      ? { base: "auto", xl: "506px" }
+                      ? { base: "auto", xl: "400px" }
                       : { base: "0", xl: "460px" }
                   }
                   transform={isActive ? { base: "none", xl: "translateY(-40px)" } : "none"}
-                  transition="transform 0.4s ease, width 0.4s ease, min-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease"
+                  transition="transform 0.4s ease, opacity 0.4s ease, padding 0.4s ease"
                   borderRadius="20px"
                   bg={isActive ? "#FFFFFF" : "#191919"}
                   color={isActive ? "#000000" : "rgba(255,255,255,0.65)"}
@@ -262,8 +263,8 @@ export default function TestimonialsSection() {
         <Button
           aria-label="Previous testimonial"
           onClick={scrollPrev}
-          w={{ base: "50px", xl: "60px" }}
-          h={{ base: "50px", xl: "60px" }}
+          w={{ base: "50px", xl: "55px" }}
+          h={{ base: "50px", xl: "55px" }}
           minW="unset"
           pb='5px'
           borderRadius="full"
@@ -278,8 +279,8 @@ export default function TestimonialsSection() {
         <Button
           aria-label="Next testimonial"
           onClick={scrollNext}
-          w={{ base: "52px", xl: "60px" }}
-          h={{ base: "52px", xl: "60px" }}
+          w={{ base: "52px", xl: "55px" }}
+          h={{ base: "52px", xl: "55px" }}
           minW="unset"
           borderRadius="full"
           bg="#FFFFFF"
