@@ -183,7 +183,7 @@ export function Navbar() {
             _hover={{ bg: "#2D50FF" }}
             flexShrink={0}
           >
-            <Link href="#contact">Apply Now</Link>
+            <Link href="/book-call">Book a Call</Link>
           </Button>
         </HStack>
 
@@ -382,7 +382,7 @@ export function Navbar() {
             w="full"
             _hover={{ bg: "#2D50FF" }}
           >
-            <Link href="#contact" onClick={closeMobileMenu}>Apply Now</Link>
+            <Link href="/book-call" onClick={closeMobileMenu}>Book a Call</Link>
           </Button>
         </Box>
         </motion.div>

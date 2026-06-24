@@ -59,7 +59,7 @@ export default function SalesSystemsPage() {
         flexDirection="column"
         justifyContent="flex-end"
       >
-        <Box position="absolute" inset={0}>
+        <Box display={{base:"none", lg:"block"}}  position="absolute" inset={0}>
           <Image
             src="/assets/sales-system-page/hero-background.png"
             alt=""

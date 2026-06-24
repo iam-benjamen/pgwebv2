@@ -11,6 +11,7 @@ const FOLDER_PATHS: Record<string, string> = {
   commercial: "GALLERY/Commercial",
   interior: "GALLERY/Interior Designs",
   residential: "GALLERY/Residential",
+  "avl-events": "GALLERY/AVL+Events",
 };
 
 function optimizeUrl(url: string): string {

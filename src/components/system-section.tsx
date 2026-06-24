@@ -49,7 +49,13 @@ const patternStyles = {
 
 const SystemSection = () => {
   return (
-    <Box as="section" position="relative" overflow="hidden" bg="#1B1B1B" py={{ base: 16, md: 24, xl: 28 }}>
+    <Box
+      as="section"
+      position="relative"
+      overflow="hidden"
+      bg="#1B1B1B"
+      py={{ base: 16, md: 24, xl: 28 }}
+    >
       <Box
         position="absolute"
         insetX="10%"
@@ -71,7 +77,7 @@ const SystemSection = () => {
               lineHeight={{ base: "1.08", md: "1.14", xl: "68px" }}
               letterSpacing="-0.5px"
             >
-              We don&apos;t create renderings.
+              We don&apos;t just <br /> create renderings.
             </Heading>
 
             <Heading
@@ -88,16 +94,20 @@ const SystemSection = () => {
           </Stack>
 
           <Grid
-            templateColumns={{ base: "1fr", md: "repeat(2, minmax(0, 1fr))", xl: "repeat(4, minmax(0, 1fr))" }}
+            templateColumns={{
+              base: "1fr",
+              md: "repeat(2, minmax(0, 1fr))",
+              xl: "repeat(4, minmax(0, 1fr))",
+            }}
             gap={{ base: 5, lg: 4 }}
           >
             {systemCards.map((card) => (
               <Box
                 key={card.title}
                 position="relative"
-                minH={{ base: "320px", md: "380px", xl: "418px" }}
                 borderRadius="12px"
                 overflow="hidden"
+                minH={{ base: "220px", md: "380px", xl: "418px" }}
                 border="1px solid rgba(255, 255, 255, 0.22)"
                 bg="linear-gradient(347.95deg, #3F3F3F 54.1%, #A5A5A5 118.77%)"
                 boxShadow="inset 0 1px 0 rgba(255, 255, 255, 0.18)"
@@ -105,7 +115,11 @@ const SystemSection = () => {
                 <Box
                   position="absolute"
                   inset={0}
-                  transform={card.pattern === "grid" ? "skewY(-2deg) scale(1.03)" : undefined}
+                  transform={
+                    card.pattern === "grid"
+                      ? "skewY(-2deg) scale(1.03)"
+                      : undefined
+                  }
                   {...patternStyles[card.pattern]}
                 />
                 <Box

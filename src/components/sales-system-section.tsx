@@ -34,7 +34,7 @@ export default function SalesSystemSection() {
       overflow="hidden"
     >
       <Flex
-        w="80%"
+        w={{ base: "93%", md: "80%" }}
         mx="auto"
         maxW="100%"
         direction={{ base: "column", lg: "row" }}
@@ -67,7 +67,7 @@ export default function SalesSystemSection() {
             lineHeight="1.55"
             color="#F0F0F0"
             fontFamily="var(--font-poppins), sans-serif"
-            fontSize={{ base: "16px", md: "18px" }}
+            fontSize={{ base: "15px", md: "18px" }}
           >
             We build integrated systems that move your <br /> project from a
             vision to a sold-out reality.
@@ -85,6 +85,7 @@ export default function SalesSystemSection() {
             _hover={{ bg: "#1a37cc" }}
             w={"max-content"}
             mt={{ base: 5, md: "1.5rem" }}
+            mb={{ base: 5, md: "0rem" }}
           >
             Build Your System
           </Button>

@@ -23,7 +23,7 @@ const filters = [
   "Commercial",
   "Interior",
   // "Animation",
-  // "AV / Lighting",
+  "AVL / Events",
   // "Virtual Tours",
 ];
 
@@ -32,6 +32,7 @@ const FILTER_TO_API: Record<string, string> = {
   Residential: "residential",
   Commercial: "commercial",
   Interior: "interior",
+  "AVL / Events": "avl-events",
 };
 
 const SKELETON_RATIOS = ["3/4", "4/5", "4/5", "3/4", "4/5", "3/4", "4/5", "4/5"];

@@ -15,6 +15,26 @@ import { Navbar } from "@/components/navbar";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import FloatingBadge from "@/components/floating-badge";
+import { CloudinaryVideo } from "@/components/cloudinary-video";
+
+const offeringCards = [
+  {
+    label: "Photorealistic Renderings",
+    shadow: "-10px 10px 25px rgba(0,0,0,0.5)",
+    href: "/works",
+  },
+  {
+    label: "Cinematic Animations",
+    shadow: "0px 10px 25px rgba(0,0,0,0.5)",
+    href: "/works?filter=animation",
+    video: "GALLERY%2FVIDEOS%2FKirubel_VR_Walkthrough_-_2_l5ndej",
+  },
+  {
+    label: "VR/AR Experiences",
+    shadow: "10px 10px 25px rgba(0,0,0,0.5)",
+    href: "/works?filter=virtual-tours",
+  },
+];
 
 const bullets = [
   "Faster buyer decision-making across every project type",
@@ -127,6 +147,111 @@ export default function InteractiveConfiguratorsPage() {
         </Box>
       </Box>
 
+      <Box as="section" bg="#121212" py={{ base: 14, xl: "120px" }}>
+        <Text
+          fontFamily="var(--font-poppins), sans-serif"
+          fontWeight="500"
+          fontSize={{ base: "20px", md: "26px", xl: "32px" }}
+          lineHeight={{ base: "1.45", xl: "38px" }}
+          letterSpacing="-0.2px"
+          color="#AEAEAE"
+          textAlign="center"
+          maxW={{ base: "90%", xl: "693px" }}
+          mx="auto"
+          mb={{ base: 10, xl: "80px" }}
+        >
+          Our visuals do more than{" "}
+          <Box as="span" color="#ffff">
+            present ideas
+          </Box>
+          . They{" "}
+          <Box as="span" color="#ffff">
+            create clarity, build confidence
+          </Box>
+          , and{" "}
+          <Box as="span" color="#ffff">
+            accelerate decisions
+          </Box>
+          .
+        </Text>
+
+        <Flex
+          direction={{ base: "column", xl: "row" }}
+          justify="center"
+          align="center"
+          gap={{ base: 6, xl: "36.5px" }}
+          px={{ base: 4, xl: 0 }}
+        >
+          {offeringCards.map((card) => (
+            <Box
+              key={card.label}
+              position="relative"
+              w={{ base: "100%", xl: "405px" }}
+              maxW="405px"
+              h={{ base: "auto", xl: "457px" }}
+              bg="#101010"
+              border="1px solid #4A4A4A"
+              boxShadow={card.shadow}
+              borderRadius="22px"
+              overflow="hidden"
+              flexShrink={0}
+            >
+              <Box
+                position="relative"
+                w="100%"
+                h={{ base: "240px", xl: "383px" }}
+                bg="#000103"
+                borderRadius="21px 21px 0 0"
+                overflow="hidden"
+              >
+                {card.video ? (
+                  <CloudinaryVideo publicId={card.video} />
+                ) : (
+                  <Image
+                    src="/assets/visual-system/Image.png"
+                    alt={card.label}
+                    fill
+                    sizes="(max-width: 1279px) 100vw, 464px"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
+                )}
+              </Box>
+
+              <Link href={card.href} style={{ textDecoration: "none" }}>
+                <HStack
+                  px="29px"
+                  justify="space-between"
+                  align="center"
+                  h={{ base: "56px", xl: "74px" }}
+                  cursor="pointer"
+                  _hover={{ opacity: 0.8 }}
+                  transition="opacity 0.2s ease"
+                >
+                  <Text
+                    fontFamily="var(--font-poppins), sans-serif"
+                    fontWeight="500"
+                    fontSize={{ base: "16px", xl: "21px" }}
+                    lineHeight="34px"
+                    letterSpacing="-0.277px"
+                    color="#FFFFFF"
+                  >
+                    {card.label}
+                  </Text>
+                  <Box w="25px" h="25px" flexShrink={0} position="relative">
+                    <Image
+                      src="/assets/visual-system/Polygon.png"
+                      alt=""
+                      fill
+                      sizes="25px"
+                      style={{ objectFit: "contain" }}
+                    />
+                  </Box>
+                </HStack>
+              </Link>
+            </Box>
+          ))}
+        </Flex>
+      </Box>
 
       <CtaSection
         minH={{ base: "300px", md: "380px", xl: "420px" }}

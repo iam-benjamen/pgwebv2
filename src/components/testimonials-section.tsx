@@ -120,7 +120,7 @@ export default function TestimonialsSection() {
                   display={"flex"}
                   w={
                     isActive
-                      ? { base: "calc(100vw - 32px)", lg: "850px" }
+                      ? { base: "calc(100vw - 22px)", lg: "850px" }
                       : { base: "0", xl: "474px" }
                   }
                   minH={
