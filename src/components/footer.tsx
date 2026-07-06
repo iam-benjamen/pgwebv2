@@ -18,26 +18,26 @@ const footerGroups = [
   {
     heading: "Solutions",
     links: [
-      { label: "Configurators", href: "#solutions" },
-      { label: "Sales Systems", href: "#solutions" },
-      { label: "Visual Systems", href: "#solutions" },
-      { label: "Interior Design", href: "#solutions" },
+      { label: "Configurators", href: "/solutions/interactive-configurators" },
+      { label: "Sales Systems", href: "/solutions/sales-systems" },
+      { label: "Visual Systems", href: "/solutions/visual-system" },
+      { label: "Interior Design", href: "/solutions/visual-system" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "#about" },
-      { label: "Works", href: "#works" },
-      { label: "Team", href: "#team" },
+      { label: "About Us", href: "/about" },
+      { label: "Works", href: "/works" },
+      { label: "Team", href: "/about" },
     ],
   },
   {
     heading: "Quick Links",
     links: [
       { label: "Book a Strategy Call", href: "/book-call" },
-      { label: "Client Results", href: "#results" },
-      { label: "Build Your Sales System", href: "#solutions" },
+      { label: "Client Results", href: "/works" },
+      { label: "Build Your Sales System", href: "/solutions/sales-systems" },
     ],
   },
 ] as const;

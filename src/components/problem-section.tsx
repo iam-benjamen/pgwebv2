@@ -1,14 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { Box, Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
+import { CloudinaryVideo } from "@/components/cloudinary-video";
 
-const YOUTUBE_VIDEO_ID = "ScMzIvxBSi4";
+const VIDEO_PUBLIC_ID =
+  "v1783375830/GALLERY/VIDEOS/Problem_Section_Video_xymebs.mp4";
 
 const ProblemSection = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   return (
     <Box
       as="section"
@@ -66,63 +64,12 @@ const ProblemSection = () => {
             w="full"
             maxW="1070px"
             borderRadius={{ base: "18px", md: "28px" }}
-            // border={{base:"3px solid #2345EF", md:"3px solid #2345EF"}}
             overflow="hidden"
-            boxShadow="0px 114px 69px rgba(0, 0, 0, 0.05), 0px 51px 51px rgba(0, 0, 0, 0.09), 0px 13px 28px rgba(0, 0, 0, 0.1)"
+            boxShadow={"lg"}
             bg="#0F0F0F"
           >
             <Box position="relative" aspectRatio={1.93}>
-              {isPlaying ? (
-                <iframe
-                  title="Project walkthrough video"
-                  src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  style={{ border: 0, width: "100%", height: "100%" }}
-                />
-              ) : (
-                <>
-                  <Image
-                    src="/assets/hero-image.png"
-                    alt="Project walkthrough preview"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 1070px"
-                    style={{ objectFit: "cover" }}
-                  />
-                  <Box
-                    position="absolute"
-                    inset={0}
-                    bg="linear-gradient(180deg, rgba(6, 7, 12, 0.14) 0%, rgba(6, 7, 12, 0.3) 100%)"
-                  />
-                  <Button
-                    onClick={() => setIsPlaying(true)}
-                    transform="translate(-50%, -50%)"
-                    w={{ base: "60px", md: "84px" }}
-                    h={{ base: "60px", md: "84px" }}
-                    boxShadow="0 20px 50px rgba(0, 0, 0, 0.28)"
-                    position="absolute"
-                    top="50%"
-                    left="50%"
-                    minW="unset"
-                    borderRadius="full"
-                    color="#EFF0FE"
-                    bg="#2345EF"
-                    _hover={{ bg: "#3555F4" }}
-                    _active={{ bg: "#1B3BE2" }}
-                    aria-label="Play video"
-                  >
-                    <Box
-                      ml="4px"
-                      w="0"
-                      h="0"
-                      borderTop="14px solid transparent"
-                      borderBottom="14px solid transparent"
-                      borderLeft="22px solid #EFF0FE"
-                    />
-                  </Button>
-                </>
-              )}
+              <CloudinaryVideo publicId={VIDEO_PUBLIC_ID} />
             </Box>
           </Box>
 

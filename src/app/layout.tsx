@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   title: "PGStudio",
   description:
     "Turning unbuilt projects into compelling sales experience that attracts investors and drives early sellouts.",
+  openGraph: {
+    images: [{ url: "/pgstudio_preview.jpg" }],
+  },
 };
 
 export default function RootLayout({
