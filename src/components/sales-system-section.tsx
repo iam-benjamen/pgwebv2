@@ -9,6 +9,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const listItems = [
   {
@@ -74,6 +75,7 @@ export default function SalesSystemSection() {
           </Text>
 
           <Button
+            asChild
             fontWeight="400"
             fontSize={{ base: "14px", xl: "16px" }}
             bg="#2345EF"
@@ -87,7 +89,7 @@ export default function SalesSystemSection() {
             mt={{ base: 5, md: "1.5rem" }}
             mb={{ base: 5, md: "0rem" }}
           >
-            Build Your System
+            <Link href="/book-call">Build Your System</Link>
           </Button>
 
           <Stack gap={{ base: 4, xl: 3 }} mt={{ base: 0, xl: 4 }}>

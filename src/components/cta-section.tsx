@@ -2,6 +2,7 @@
 
 import { Box, Button, Container, Heading, Stack } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface CtaSectionProps {
@@ -92,6 +93,7 @@ const CtaSection = ({
             </Box>
 
             <Button
+              asChild
               bg="#2345EF"
               color="#FFFFFF"
               h="63px"
@@ -104,7 +106,7 @@ const CtaSection = ({
               _hover={{ bg: "#3555F4" }}
               _active={{ bg: "#1B3BE2" }}
             >
-              {buttonText}
+              <Link href="/book-call">{buttonText}</Link>
             </Button>
           </Stack>
         </Box>

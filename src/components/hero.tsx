@@ -10,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "./navbar";
 import FloatingBadge from "./floating-badge";
 
@@ -117,6 +118,7 @@ const Hero = () => {
 
             <HStack gap={4} flexWrap="wrap" justify="center">
               <Button
+                asChild
                 bg="#2345EF"
                 color="#FFFFFF"
                 h="63px"
@@ -129,9 +131,10 @@ const Hero = () => {
                 boxShadow="7px 42px 17px rgba(0,0,0,0.01), 4px 23px 14px rgba(0,0,0,0.05), 2px 10px 11px rgba(0,0,0,0.09), 0px 3px 6px rgba(0,0,0,0.1)"
                 _hover={{ bg: "#2D50FF" }}
               >
-                Book a Strategy Call
+                <Link href="/book-call">Book a Strategy Call</Link>
               </Button>
               <Button
+                asChild
                 variant="ghost"
                 color="#FFFFFF"
                 h="63px"
@@ -144,7 +147,7 @@ const Hero = () => {
                 border="1px solid rgba(255,255,255,0.5)"
                 _hover={{ bg: "rgba(255,255,255,0.08)" }}
               >
-                View Live Projects
+                <Link href="/works">View Live Projects</Link>
               </Button>
             </HStack>
           </Stack>

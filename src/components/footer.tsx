@@ -35,7 +35,7 @@ const footerGroups = [
   {
     heading: "Quick Links",
     links: [
-      { label: "Book a Strategy Call", href: "#contact" },
+      { label: "Book a Strategy Call", href: "/book-call" },
       { label: "Client Results", href: "#results" },
       { label: "Build Your Sales System", href: "#solutions" },
     ],

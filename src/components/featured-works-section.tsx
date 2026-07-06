@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const works = [
@@ -133,6 +134,7 @@ export default function FeaturedWorksSection() {
 
       <Box display="flex" justifyContent="center">
         <Button
+          asChild
           fontFamily="var(--font-poppins), sans-serif"
           fontWeight="500"
           fontSize={{ base:".75rem",md:"18px"}}
@@ -146,7 +148,7 @@ export default function FeaturedWorksSection() {
           _hover={{ bg: "#1a37cc" }}
           boxShadow="7px 42px 17px rgba(0,0,0,0.01), 4px 23px 14px rgba(0,0,0,0.05), 2px 10px 11px rgba(0,0,0,0.09), 0px 3px 6px rgba(0,0,0,0.1)"
         >
-          View Works
+          <Link href="/works">View Works</Link>
         </Button>
       </Box>
     </Box>
