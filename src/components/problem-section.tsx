@@ -62,7 +62,7 @@ const ProblemSection = () => {
           <Box
             position="relative"
             w="full"
-            maxW="1070px"
+            maxW="1170px"
             borderRadius={{ base: "18px", md: "28px" }}
             overflow="hidden"
             boxShadow={"lg"}

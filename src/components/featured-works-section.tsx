@@ -5,10 +5,30 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const works = [
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png" },
-  { title: "AJUBA", credit: "By Kayceelaw Properties", image: "/assets/featured-works/featured.png" },
+  {
+    title: "AJUBA",
+    credit: "By Kayceelaw Properties",
+    image:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1781820848/GALLERY/Residential/1_A_qoeo3j.jpg",
+  },
+  {
+    title: "MEGA TOWERS",
+    credit: "By Madelba Construction",
+    image:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1781820723/GALLERY/Commercial/ImgHunt_Behance_20260611_47b7f8192034665.65d566bcc9567_tn2wit.jpg",
+  },
+  {
+    title: "BELMONT PRESERVE",
+    credit: "By Housing Joint Ventures",
+    image:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1781820850/GALLERY/Residential/SCENE_2_ksfgtw.jpg",
+  },
+  {
+    title: "MEGA MANSIONS",
+    credit: "By Madelba Construction",
+    image:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1781820832/GALLERY/Residential/ImgHunt_Behance_20260611_cdf299178982257.64f16d630a777_fx8vzw.jpg",
+  },
 ];
 
 function WorkCard({ title, credit, image }: { title: string; credit: string; image: string }) {

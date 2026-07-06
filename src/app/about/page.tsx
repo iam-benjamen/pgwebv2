@@ -386,7 +386,7 @@ export default function AboutPage() {
           </Flex>
         </Box>
 
-        <Box w="93%" mx="auto" pb={{ base: 14, xl: "80px" }}>
+        {/* <Box w="93%" mx="auto" pb={{ base: 14, xl: "80px" }}>
           <Box
             display="grid"
             gridTemplateColumns={{
@@ -438,7 +438,7 @@ export default function AboutPage() {
               </Box>
             ))}
           </Box>
-        </Box>
+        </Box> */}
       </Box>
 
       <Box as="section" bg="#FFFFFF" py={{ base: 16, xl: "100px" }}>
@@ -524,7 +524,7 @@ export default function AboutPage() {
         </Box>
       </Box>
 
-      <Box as="section" bg="#F3F3F3" py={{ base: 16, xl: "100px" }}>
+      {/* <Box as="section" bg="#F3F3F3" py={{ base: 16, xl: "100px" }}>
         <Box w="93%" mx="auto">
           <Stack align="center" gap={2} mb={{ base: 10, xl: "60px" }}>
             <Text
@@ -659,7 +659,7 @@ export default function AboutPage() {
             ))}
           </Box>
         </Box>
-      </Box>
+      </Box> */}
 
       <CtaSection
         minH={{ base: "300px", md: "380px", xl: "420px" }}
