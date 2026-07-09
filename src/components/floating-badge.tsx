@@ -2,10 +2,13 @@
 
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FloatingBadge() {
   return (
     <Box
+      as={Link}
+      href="/book-call"
       zIndex={100}
       position="fixed"
       cursor="pointer"
