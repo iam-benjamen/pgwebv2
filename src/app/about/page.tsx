@@ -7,6 +7,81 @@ import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import FloatingBadge from "@/components/floating-badge";
 
+const teamMembers = [
+  {
+    name: "Inioluwa Adediran",
+    title: "Director of Business Strategy",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845350/TEAM/Inioluwa_Adediran_eelvul.jpg",
+  },
+  {
+    name: "Benjamen Areo",
+    title: "Director of Technology",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845359/TEAM/Benjamen_Areo_tahysz.jpg",
+  },
+  {
+    name: "Abdulmalik Adeleke",
+    title: "Director of Interactive Visualization",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845352/TEAM/Abdulmalik_Adeleke_c4xr0u.jpg",
+  },
+  {
+    name: "David Bamikunle",
+    title: "Creative Director",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845356/TEAM/David_Bamikunle_c4lvga.jpg",
+  },
+  {
+    name: "Mazen Tail",
+    title: "Director of Operations",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845352/TEAM/Mazen_Tail_inkvj8.jpg",
+  },
+  {
+    name: "Paul Kobia",
+    title: "Director of Paid Media",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845352/TEAM/Paul_Kobia_dfcjh1.jpg",
+  },
+  {
+    name: "Iyanuoluwa Adediran",
+    title: "Director of People Operations",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845360/TEAM/Iyanuoluwa_Adediran_wwfwy3.jpg",
+  },
+  {
+    name: "Archibong Okon",
+    title: "Regional Director of Architecture (Africa)",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845351/TEAM/Archibong_Okon_kmbeqo.jpg",
+  },
+  {
+    name: "Mody Hesham",
+    title: "Motion Director",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845356/TEAM/Mody_Hesham_wptyoo.jpg",
+  },
+  {
+    name: "Marwan Abdelkader",
+    title: "Automation & Systems Engineer",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845353/TEAM/Marwan_Abdelkader_bb0vq9.jpg",
+  },
+  {
+    name: "Kirubel Sileshi",
+    title: "Interactive Visualization Engineer",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845353/TEAM/Kirubel_Sileshi_jw5j0y.jpg",
+  },
+  {
+    name: "Blessing Darasimi",
+    title: "Social Media Strategist",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845355/TEAM/Blessing_Darasimi_cszotx.jpg",
+  },
+];
+
 export default function AboutPage() {
   return (
     <Box bg="#050816" minH="100svh" color="#F5F7FA">
@@ -386,7 +461,7 @@ export default function AboutPage() {
           </Flex>
         </Box>
 
-        {/* <Box w="93%" mx="auto" pb={{ base: 14, xl: "80px" }}>
+        <Box w="93%" mx="auto" pb={{ base: 14, xl: "80px" }}>
           <Box
             display="grid"
             gridTemplateColumns={{
@@ -396,7 +471,7 @@ export default function AboutPage() {
             gap={{ base: 6, xl: "18px" }}
             rowGap={{ base: 10, xl: "60px" }}
           >
-            {Array.from({ length: 8 }).map((_, i) => (
+            {teamMembers.map((member, i) => (
               <Box key={i}>
                 <Box
                   position="relative"
@@ -406,8 +481,8 @@ export default function AboutPage() {
                   bg="#FFFFFF"
                 >
                   <Image
-                    src="/assets/about/member-image.png"
-                    alt="Team member"
+                    src={member.imageSrc}
+                    alt={member.name}
                     fill
                     sizes="(max-width: 768px) 45vw, 309px"
                     style={{ objectFit: "cover", objectPosition: "top" }}
@@ -422,7 +497,7 @@ export default function AboutPage() {
                     letterSpacing="-0.15px"
                     color="#F1F1F1"
                   >
-                    John Doe
+                    {member.name}
                   </Text>
                   <Text
                     fontFamily="var(--font-poppins), sans-serif"
@@ -432,13 +507,13 @@ export default function AboutPage() {
                     letterSpacing="-0.18px"
                     color="#848484"
                   >
-                    Managing Director
+                    {member.title}
                   </Text>
                 </Box>
               </Box>
             ))}
           </Box>
-        </Box> */}
+        </Box>
       </Box>
 
       <Box as="section" bg="#FFFFFF" py={{ base: 16, xl: "100px" }}>
