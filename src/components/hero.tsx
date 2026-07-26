@@ -152,7 +152,7 @@ const Hero = () => {
               Sell Smarter
             </Text>
 
-            <Box position="relative" w="271px" h="10px">
+            <Box position="relative" w="271px" h="10px" mt={{ base: "-8px", md: 0 }}>
               <Image
                 src="/assets/hero-section/Curved Line.png"
                 alt=""
