@@ -12,73 +12,73 @@ const teamMembers = [
     name: "Inioluwa Adediran",
     title: "Director of Business Strategy",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845350/TEAM/Inioluwa_Adediran_eelvul.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075453/TEAM/Inioluwa_Adediran_w1y6vv.jpg",
   },
   {
     name: "Benjamen Areo",
     title: "Director of Technology",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845359/TEAM/Benjamen_Areo_tahysz.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075452/TEAM/Benjamen_Areo_yev7kk.jpg",
   },
   {
     name: "Abdulmalik Adeleke",
     title: "Director of Interactive Visualization",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845352/TEAM/Abdulmalik_Adeleke_c4xr0u.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075455/TEAM/Abdulmalik_Adeleke_m0bzvm.jpg",
   },
   {
     name: "David Bamikunle",
     title: "Creative Director",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845356/TEAM/David_Bamikunle_c4lvga.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075453/TEAM/David_Bamikunle_uesufq.jpg",
   },
   {
     name: "Mazen Tail",
     title: "Director of Operations",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845352/TEAM/Mazen_Tail_inkvj8.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075455/TEAM/Mazen_Tail_tsyjpw.jpg",
   },
   {
     name: "Paul Kobia",
     title: "Director of Paid Media",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845352/TEAM/Paul_Kobia_dfcjh1.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075456/TEAM/Paul_Kobia_lyq3d8.jpg",
   },
   {
     name: "Iyanuoluwa Adediran",
     title: "Director of People Operations",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845360/TEAM/Iyanuoluwa_Adediran_wwfwy3.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075455/TEAM/Iyanuoluwa_Adediran_skkgjd.jpg",
   },
   {
     name: "Archibong Okon",
     title: "Regional Director of Architecture (Africa)",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845351/TEAM/Archibong_Okon_kmbeqo.jpg",
-  },
-  {
-    name: "Mody Hesham",
-    title: "Motion Director",
-    imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845356/TEAM/Mody_Hesham_wptyoo.jpg",
-  },
-  {
-    name: "Marwan Abdelkader",
-    title: "Automation & Systems Engineer",
-    imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845353/TEAM/Marwan_Abdelkader_bb0vq9.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075455/TEAM/Archibong_Okon_oa6wgm.jpg",
   },
   {
     name: "Kirubel Sileshi",
     title: "Interactive Visualization Engineer",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845353/TEAM/Kirubel_Sileshi_jw5j0y.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075453/TEAM/Kirubel_Sileshi_albp5u.jpg",
+  },
+  {
+    name: "Marwan Abdelkader",
+    title: "Automation & Systems Engineer",
+    imageSrc:
+    "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075452/TEAM/Marwan_Abdelkader_oykzle.jpg",
+  },
+  {
+    name: "Mody Hesham",
+    title: "Motion Director",
+    imageSrc:
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075453/TEAM/Mody_Hesham_n7tl2z.jpg",
   },
   {
     name: "Blessing Darasimi",
     title: "Social Media Strategist",
     imageSrc:
-      "https://res.cloudinary.com/djskbsz2k/image/upload/v1784845355/TEAM/Blessing_Darasimi_cszotx.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075452/TEAM/Blessing_Darasimi_ildmdw.jpg",
   },
 ];
 

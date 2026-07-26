@@ -59,7 +59,11 @@ export default function SalesSystemsPage() {
         flexDirection="column"
         justifyContent="flex-end"
       >
-        <Box display={{base:"none", lg:"block"}}  position="absolute" inset={0}>
+        <Box
+          display={{ base: "none", lg: "block" }}
+          position="absolute"
+          inset={0}
+        >
           <Image
             src="/assets/sales-system-page/hero-background.png"
             alt=""
@@ -137,8 +141,8 @@ export default function SalesSystemsPage() {
 
           <Flex
             direction={{ base: "column", lg: "row" }}
-            gap={{ base: 10, xl: "80px" }}
-            align={{ base: "flex-start", lg: "center" }}
+            gap={{ base: 10, xl: "1.5rem" }}
+            align={{ base: "flex-start", lg: "stretch" }}
           >
             <Stack gap={6} maxW={{ base: "100%", lg: "45%" }} flexShrink={0}>
               <Text
@@ -213,13 +217,12 @@ export default function SalesSystemsPage() {
               </Box>
             </Stack>
 
-            <Box flex="1" borderRadius="20px" overflow="hidden">
+            <Box flex="1" overflow="hidden" position="relative">
               <Image
-                src="/assets/sales-system-page/ILLUSTRATION.png"
+                src="https://res.cloudinary.com/djskbsz2k/image/upload/v1785088250/GALLERY/ILLUSTRATION_g0vpbd.png"
                 alt="Sales system illustration"
-                width={147}
-                height={61}
-                style={{ width: "100%", height: "auto", display: "block" }}
+                fill
+                style={{ objectFit: "contain", objectPosition: "center" }}
               />
             </Box>
           </Flex>

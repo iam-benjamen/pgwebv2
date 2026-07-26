@@ -56,7 +56,7 @@ export function OurClientsSection() {
       />
 
       <Box
-        pt={{ base: 16, xl: "134px" }}
+        pt={{ base: 16, xl: "100px" }}
         pb={{ base: 16, xl: "135px" }}
         position="relative"
         zIndex={2}
