@@ -66,7 +66,7 @@ const teamMembers = [
     name: "Marwan Abdelkader",
     title: "Automation & Systems Engineer",
     imageSrc:
-    "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075452/TEAM/Marwan_Abdelkader_oykzle.jpg",
+      "https://res.cloudinary.com/djskbsz2k/image/upload/v1785075452/TEAM/Marwan_Abdelkader_oykzle.jpg",
   },
   {
     name: "Mody Hesham",
@@ -391,24 +391,17 @@ export default function AboutPage() {
             align="flex-end"
           >
             <Box
-              position="relative"
               flexShrink={0}
               w={{ base: "100%", lg: "320px", xl: "398px" }}
             >
-              <Box
-                position="relative"
-                w="100%"
-                h={{ base: "420px", xl: "530px" }}
-                overflow="hidden"
-              >
-                <Image
-                  src="/assets/about/principal-image.png"
-                  alt="Promise (Ilerioluwa) Adediran"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 398px"
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                />
-              </Box>
+              <Image
+                src="/assets/about/Promise_Adediran.png"
+                alt="Promise (Ilerioluwa) Adediran"
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 100vw, 398px"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
             </Box>
 
             <Stack gap={4} flex="1" pt={{ base: 0, lg: "20px" }}>
