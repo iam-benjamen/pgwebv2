@@ -232,7 +232,7 @@ export default function InteractiveConfiguratorsPage() {
                   boxShadow="7px 42px 17px rgba(0,0,0,0.01), 4px 23px 14px rgba(0,0,0,0.05), 2px 10px 11px rgba(0,0,0,0.09), 0px 3px 6px rgba(0,0,0,0.1)"
                   _hover={{ bg: "#2D50FF" }}
                 >
-                  <Link href="#contact">Request a Demo</Link>
+                  <Link href="/book-call">Request a Demo</Link>
                 </Button>
               </Box>
             </Stack>

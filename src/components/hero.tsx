@@ -39,10 +39,12 @@ const Hero = () => {
         position={{ base: "relative", md: "absolute" }}
         top={{ md: "36%" }}
         left={{ md: 0 }}
+        right={{ md: 0 }}
+        bottom={{ md: 0 }}
         w="100%"
         flex={{ base: "1", md: "initial" }}
         minH={{ base: "280px", md: "auto" }}
-        h={{ md: "860px" }}
+        overflow="hidden"
         order={{ base: 2 }}
         zIndex={0}
       >
