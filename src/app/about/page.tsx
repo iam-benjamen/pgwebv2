@@ -592,7 +592,7 @@ export default function AboutPage() {
         </Box>
       </Box>
 
-      {/* <Box as="section" bg="#F3F3F3" py={{ base: 16, xl: "100px" }}>
+      <Box as="section" bg="#F3F3F3" py={{ base: 16, xl: "100px" }}>
         <Box w="93%" mx="auto">
           <Stack align="center" gap={2} mb={{ base: 10, xl: "60px" }}>
             <Text
@@ -622,7 +622,62 @@ export default function AboutPage() {
             gap={{ base: 5, xl: "29px" }}
             rowGap={{ base: 10, xl: "60px" }}
           >
-            {Array.from({ length: 9 }).map((_, i) => (
+            {[
+              {
+                quote:
+                  "PGStudio helped us launch our biggest project yet: a 50-hectare master-planned community. We generated early sales before construction and gained the confidence to pursue larger opportunities.",
+                name: "Emmanuel Kelechukwu",
+                role: "CEO, Kayceelaw Properties",
+              },
+              {
+                quote:
+                  "After disappointing experiences elsewhere, PGStudio exceeded every expectation. Their communication, attention to detail, and client understanding gave us confidence while helping us close projects significantly faster.",
+                name: "Keith Paton",
+                role: "Owner/CEO, Rockledge Remodeling",
+              },
+              {
+                quote:
+                  "PGStudio's work elevated our credibility. It helped us raise millions, attract government-backed housing opportunities, and compete confidently for larger development projects within our first year.",
+                name: "John Boros",
+                role: "Founder, Keylight Development",
+              },
+              {
+                quote:
+                  "One of the best business decisions we've made. PGStudio's effective visuals generated early leads and completely eliminated the need to stage our properties.",
+                name: "Nick Padayachee",
+                role: "Owner, Angelic Real Estate & Investments",
+              },
+              {
+                quote:
+                  "PGStudio exceeded every expectation. Their immersive visuals & walkthroughs and collaborative design process helped us confidently create our dream home exactly as we envisioned it.",
+                name: "Former NFL Player",
+                role: "(Name withheld for privacy)",
+              },
+              {
+                quote:
+                  "As a home remodeler, I trusted them with my own home. They unlocked nearly 1,000 extra square feet and completely changed how I approach every renovation.",
+                name: "Sione Manisela",
+                role: "Texan Concrete Specialist",
+              },
+              {
+                quote:
+                  "Our go-to design partner. Their creativity, technical expertise, and realistic visuals help us win projects and deliver exceptional results every time.",
+                name: "Jackson Jacobs",
+                role: "Founder, SoundTRIP & ST Construction",
+              },
+              {
+                quote:
+                  "PGStudio helped us secure our biggest commercial project. They handled everything, met a tight deadline, and gave our client complete confidence in the final design.",
+                name: "Antonella LoDuca",
+                role: "Founder, Vitabella Interiors",
+              },
+              {
+                quote:
+                  "They filled a critical gap for us. Their photorealistic visuals helped our clients experience each space before construction, giving both us and our clients confidence before construction even began.",
+                name: "Allison Taylor",
+                role: "Lead Designer, CW Interiors",
+              },
+            ].map((t, i) => (
               <Box
                 key={i}
                 bg="#FFFFFF"
@@ -654,8 +709,7 @@ export default function AboutPage() {
                 </Box>
                 <HStack gap="3px" mb={4}>
                   {Array.from({ length: 5 }).map((_, s) => {
-                    const filled = s < 4;
-                    const c = filled ? "#2345EF" : "#2345EF33";
+                    const c = "#2345EF";
                     return (
                       <svg
                         key={s}
@@ -686,9 +740,7 @@ export default function AboutPage() {
                   color="#000000"
                   mb={5}
                 >
-                  &ldquo;These guys are the best to work with. Lorem ipsum dolor
-                  sit amet and every other things people write. But all I know
-                  is that PGStudio is second to none.&rdquo;
+                  &ldquo;{t.quote}&rdquo;
                 </Text>
 
                 <HStack gap="9.65px">
@@ -698,7 +750,22 @@ export default function AboutPage() {
                     borderRadius="full"
                     bg="#D9D9D9"
                     flexShrink={0}
-                  />
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Text
+                      fontFamily="var(--font-poppins), sans-serif"
+                      fontWeight="700"
+                      fontSize="12px"
+                      color="#333333"
+                      lineHeight="1"
+                    >
+                      {t.name.split(" ").filter(Boolean).length === 1
+                        ? t.name[0].toUpperCase()
+                        : (t.name.split(" ").filter(Boolean)[0][0] + t.name.split(" ").filter(Boolean).slice(-1)[0][0]).toUpperCase()}
+                    </Text>
+                  </Box>
                   <Box>
                     <Text
                       fontFamily="var(--font-poppins), sans-serif"
@@ -709,7 +776,7 @@ export default function AboutPage() {
                       color="#000000"
                       lineHeight="1.2"
                     >
-                      Promise Adediran
+                      {t.name}
                     </Text>
                     <Text
                       fontFamily="var(--font-poppins), sans-serif"
@@ -719,7 +786,7 @@ export default function AboutPage() {
                       color="#000000"
                       lineHeight="13px"
                     >
-                      Founder, PGStudio
+                      {t.role}
                     </Text>
                   </Box>
                 </HStack>
@@ -727,7 +794,7 @@ export default function AboutPage() {
             ))}
           </Box>
         </Box>
-      </Box> */}
+      </Box>
 
       <CtaSection
         minH={{ base: "300px", md: "380px", xl: "420px" }}

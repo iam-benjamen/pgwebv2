@@ -24,28 +24,34 @@ const testimonials = [
   {
     rating: 5,
     quote:
-      "These guys are the best to work with. Lorem Ipsum dolor sit amet and every other things people write. But all I know is that PGStudio is second to none.",
-    name: "Promise Adediran",
-    role: "Founder, PGStudio",
+      "After disappointing experiences elsewhere, PGStudio exceeded every expectation. Their communication, attention to detail, and client understanding gave us confidence while helping us close projects significantly faster.",
+    name: "Keith Paton",
+    role: "Owner/CEO, Rockledge Remodeling",
     starColor: "#2345EF",
   },
   {
     rating: 5,
     quote:
-      "We needed clients to gain confidence fast and save their decisions forever. Many teams promise it. PGStudio made it clear.",
-    name: "Amara Lowell",
-    role: "Principal Designer",
+      "PGStudio helped us launch our biggest project yet: a 50-hectare master-planned community. We generated early sales before construction and gained the confidence to pursue larger opportunities.",
+    name: "Emmanuel Kelechukwu",
+    role: "CEO, Kayceelaw Properties",
     starColor: "#2345EF",
   },
   {
-    rating: 4,
+    rating: 5,
     quote:
-      "Financial planning and knowledge in the right places helped our entire team understand the vision faster than ever.",
-    name: "Guy Hawkins",
-    role: "Medical Assistant",
+      "PGStudio's work elevated our credibility. It helped us raise millions, attract government-backed housing opportunities, and compete confidently for larger development projects within our first year.",
+    name: "John Boros",
+    role: "Founder, Keylight Development",
     starColor: "#2345EF",
   },
 ];
+
+function getInitials(name: string) {
+  const parts = name.split(" ").filter(Boolean);
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
 
 function Stars({ count, color }: { count: number; color: string }) {
   return (
@@ -186,7 +192,20 @@ export default function TestimonialsSection() {
                         borderRadius="full"
                         flexShrink={0}
                         bg={isActive ? "#D9D9D9" : "rgba(255,255,255,0.12)"}
-                      />
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <Text
+                          fontFamily="var(--font-poppins), sans-serif"
+                          fontWeight="700"
+                          fontSize={{ base: "18px", xl: "22px" }}
+                          color={isActive ? "#333333" : "rgba(255,255,255,0.7)"}
+                          lineHeight="1"
+                        >
+                          {getInitials(t.name)}
+                        </Text>
+                      </Box>
                       <Stack gap="4px">
                         <Text
                           fontFamily="'Monument Extended', var(--font-poppins), sans-serif"
