@@ -391,7 +391,8 @@ export default function WorksPage() {
             .works-masonry { columns: 2; column-gap: 12px; }
             @media (min-width: 1280px) { .works-masonry { columns: 4; } }
             .works-masonry-item { break-inside: avoid; margin-bottom: 12px; }
-            .animation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+            .animation-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+            @media (min-width: 768px) { .animation-grid { grid-template-columns: 1fr 1fr; } }
             @keyframes shimmer {
               0% { background-position: -200% 0; }
               100% { background-position: 200% 0; }
