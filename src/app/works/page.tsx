@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Box,
   Button,
@@ -22,7 +22,7 @@ const filters = [
   "Residential",
   "Commercial",
   "Interior",
-  // "Animation",
+  "Animation",
   "AVL / Events",
   // "Virtual Tours",
 ];
@@ -32,12 +32,14 @@ const FILTER_TO_API: Record<string, string> = {
   Residential: "residential",
   Commercial: "commercial",
   Interior: "interior",
+  Animation: "animation",
   "AVL / Events": "avl-events",
 };
 
 const SKELETON_RATIOS = ["3/4", "4/5", "4/5", "3/4", "4/5", "3/4", "4/5", "4/5"];
 
 type WorkImage = { url: string; ratio: string };
+type WorkVideo = { url: string; thumbnailUrl: string; ratio: string };
 
 function noRightClick(e: React.MouseEvent) {
   e.preventDefault();
@@ -169,9 +171,69 @@ function Lightbox({ image, onClose }: { image: WorkImage; onClose: () => void })
   );
 }
 
+function VideoCard({ url, ratio }: WorkVideo) {
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    setPlaying(true);
+    videoRef.current?.play();
+  };
+
+  return (
+    <Box
+      position="relative"
+      w="100%"
+      style={{ aspectRatio: ratio }}
+      overflow="hidden"
+      bg="rgba(255,255,255,0.05)"
+      borderRadius="4px"
+    >
+      <video
+        ref={videoRef}
+        src={url}
+        preload="metadata"
+        controls={playing}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
+      />
+      {!playing && (
+        <Box
+          position="absolute"
+          bottom="12px"
+          right="12px"
+          w="42px"
+          h="42px"
+          borderRadius="full"
+          bg="rgba(0,0,0,0.55)"
+          border="1.5px solid rgba(255,255,255,0.35)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          cursor="pointer"
+          _hover={{ bg: "rgba(0,0,0,0.75)" }}
+          onClick={handlePlay}
+          style={{ backdropFilter: "blur(4px)" }}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M5 3L13 8L5 13V3Z" fill="white" />
+          </svg>
+        </Box>
+      )}
+    </Box>
+  );
+}
+
 export default function WorksPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [images, setImages] = useState<WorkImage[]>([]);
+  const [videos, setVideos] = useState<WorkVideo[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<WorkImage | null>(null);
 
@@ -181,14 +243,22 @@ export default function WorksPage() {
     const apiFilter = FILTER_TO_API[activeFilter];
     if (!apiFilter) {
       setImages([]);
+      setVideos([]);
       setLoading(false);
       return;
     }
     setLoading(true);
-    fetch(`/api/works?filter=${apiFilter}`)
-      .then((r) => r.json())
-      .then((data) => setImages(data.images ?? []))
-      .finally(() => setLoading(false));
+    if (activeFilter === "Animation") {
+      fetch(`/api/works?filter=animation`)
+        .then((r) => r.json())
+        .then((data) => { setVideos(data.videos ?? []); setImages([]); })
+        .finally(() => setLoading(false));
+    } else {
+      fetch(`/api/works?filter=${apiFilter}`)
+        .then((r) => r.json())
+        .then((data) => { setImages(data.images ?? []); setVideos([]); })
+        .finally(() => setLoading(false));
+    }
   }, [activeFilter]);
 
   return (
@@ -321,6 +391,7 @@ export default function WorksPage() {
             .works-masonry { columns: 2; column-gap: 12px; }
             @media (min-width: 1280px) { .works-masonry { columns: 4; } }
             .works-masonry-item { break-inside: avoid; margin-bottom: 12px; }
+            .animation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
             @keyframes shimmer {
               0% { background-position: -200% 0; }
               100% { background-position: 200% 0; }
@@ -341,13 +412,39 @@ export default function WorksPage() {
           `}</style>
 
           {loading ? (
-            <div className="works-masonry">
-              {SKELETON_RATIOS.map((ratio, i) => (
-                <div key={i} className="works-masonry-item">
-                  <SkeletonCard ratio={ratio} />
-                </div>
-              ))}
-            </div>
+            activeFilter === "Animation" ? (
+              <div className="animation-grid">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <SkeletonCard key={i} ratio="16/9" />
+                ))}
+              </div>
+            ) : (
+              <div className="works-masonry">
+                {SKELETON_RATIOS.map((ratio, i) => (
+                  <div key={i} className="works-masonry-item">
+                    <SkeletonCard ratio={ratio} />
+                  </div>
+                ))}
+              </div>
+            )
+          ) : activeFilter === "Animation" ? (
+            videos.length === 0 ? (
+              <Box
+                color="rgba(255,255,255,0.3)"
+                textAlign="center"
+                py={20}
+                fontFamily="var(--font-poppins), sans-serif"
+                fontSize="15px"
+              >
+                No animations yet.
+              </Box>
+            ) : (
+              <div className="animation-grid">
+                {videos.map((vid, i) => (
+                  <VideoCard key={i} {...vid} />
+                ))}
+              </div>
+            )
           ) : images.length === 0 ? (
             <Box
               color="rgba(255,255,255,0.3)"
