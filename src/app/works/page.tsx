@@ -14,7 +14,7 @@ import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
-import FloatingBadge from "@/components/floating-badge";
+import VirtualTourSection from "@/components/virtual-tour-section";
 
 const filters = [
   "All",
@@ -24,7 +24,7 @@ const filters = [
   "Interior",
   "Animation",
   "AVL / Events",
-  // "Virtual Tours",
+  "Virtual Tours",
 ];
 
 const FILTER_TO_API: Record<string, string> = {
@@ -34,6 +34,7 @@ const FILTER_TO_API: Record<string, string> = {
   Interior: "interior",
   Animation: "animation",
   "AVL / Events": "avl-events",
+  "Virtual Tours": "virtual-tours",
 };
 
 const SKELETON_RATIOS = ["3/4", "4/5", "4/5", "3/4", "4/5", "3/4", "4/5", "4/5"];
@@ -101,8 +102,7 @@ function Lightbox({ image, onClose }: { image: WorkImage; onClose: () => void })
       document.body.style.overflow = "";
     };
   }, [onClose]);
-
-  // Swap w_800 → w_1600 for a sharper full-screen view
+  
   const fullUrl = image.url.replace("w_800", "w_1600");
 
   return (
@@ -386,50 +386,73 @@ export default function WorksPage() {
               </Button>
             ))}
           </HStack>
+        </Box>
 
-          <style>{`
-            .works-masonry { columns: 2; column-gap: 12px; }
-            @media (min-width: 1280px) { .works-masonry { columns: 4; } }
-            .works-masonry-item { break-inside: avoid; margin-bottom: 12px; }
-            .animation-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-            @media (min-width: 768px) { .animation-grid { grid-template-columns: 1fr 1fr; } }
-            @keyframes shimmer {
-              0% { background-position: -200% 0; }
-              100% { background-position: 200% 0; }
-            }
-            .works-skeleton {
-              background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
-              background-size: 200% 100%;
-              animation: shimmer 1.6s infinite;
-            }
-            @keyframes lbFadeIn {
-              from { opacity: 0; }
-              to { opacity: 1; }
-            }
-            @keyframes lbScaleIn {
-              from { transform: scale(0.95); opacity: 0; }
-              to { transform: scale(1); opacity: 1; }
-            }
-          `}</style>
+        <style>{`
+          .works-masonry { columns: 2; column-gap: 12px; }
+          @media (min-width: 1280px) { .works-masonry { columns: 4; } }
+          .works-masonry-item { break-inside: avoid; margin-bottom: 12px; }
+          .animation-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+          @media (min-width: 768px) { .animation-grid { grid-template-columns: 1fr 1fr; } }
+          @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
+          .works-skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.6s infinite;
+          }
+          @keyframes lbFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes lbScaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+          }
+        `}</style>
 
-          {loading ? (
-            activeFilter === "Animation" ? (
-              <div className="animation-grid">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <SkeletonCard key={i} ratio="16/9" />
-                ))}
-              </div>
-            ) : (
-              <div className="works-masonry">
-                {SKELETON_RATIOS.map((ratio, i) => (
-                  <div key={i} className="works-masonry-item">
-                    <SkeletonCard ratio={ratio} />
-                  </div>
-                ))}
-              </div>
-            )
-          ) : activeFilter === "Animation" ? (
-            videos.length === 0 ? (
+        {/* Virtual Tours — full-width, no outer constraint */}
+        {activeFilter === "Virtual Tours" ? (
+          <VirtualTourSection />
+        ) : (
+          <Box w="93%" mx="auto">
+            {loading ? (
+              activeFilter === "Animation" ? (
+                <div className="animation-grid">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <SkeletonCard key={i} ratio="16/9" />
+                  ))}
+                </div>
+              ) : (
+                <div className="works-masonry">
+                  {SKELETON_RATIOS.map((ratio, i) => (
+                    <div key={i} className="works-masonry-item">
+                      <SkeletonCard ratio={ratio} />
+                    </div>
+                  ))}
+                </div>
+              )
+            ) : activeFilter === "Animation" ? (
+              videos.length === 0 ? (
+                <Box
+                  color="rgba(255,255,255,0.3)"
+                  textAlign="center"
+                  py={20}
+                  fontFamily="var(--font-poppins), sans-serif"
+                  fontSize="15px"
+                >
+                  No animations yet.
+                </Box>
+              ) : (
+                <div className="animation-grid">
+                  {videos.map((vid, i) => (
+                    <VideoCard key={i} {...vid} />
+                  ))}
+                </div>
+              )
+            ) : images.length === 0 ? (
               <Box
                 color="rgba(255,255,255,0.3)"
                 textAlign="center"
@@ -437,35 +460,19 @@ export default function WorksPage() {
                 fontFamily="var(--font-poppins), sans-serif"
                 fontSize="15px"
               >
-                No animations yet.
+                No images yet for this category.
               </Box>
             ) : (
-              <div className="animation-grid">
-                {videos.map((vid, i) => (
-                  <VideoCard key={i} {...vid} />
+              <div className="works-masonry">
+                {images.map((img, i) => (
+                  <div key={i} className="works-masonry-item">
+                    <ProjectCard {...img} onClick={() => setSelected(img)} />
+                  </div>
                 ))}
               </div>
-            )
-          ) : images.length === 0 ? (
-            <Box
-              color="rgba(255,255,255,0.3)"
-              textAlign="center"
-              py={20}
-              fontFamily="var(--font-poppins), sans-serif"
-              fontSize="15px"
-            >
-              No images yet for this category.
-            </Box>
-          ) : (
-            <div className="works-masonry">
-              {images.map((img, i) => (
-                <div key={i} className="works-masonry-item">
-                  <ProjectCard {...img} onClick={() => setSelected(img)} />
-                </div>
-              ))}
-            </div>
-          )}
-        </Box>
+            )}
+          </Box>
+        )}
       </Box>
 
       {selected && <Lightbox image={selected} onClose={closeLight} />}
@@ -509,7 +516,6 @@ export default function WorksPage() {
         }
       />
       <Footer />
-      <FloatingBadge />
     </Box>
   );
 }

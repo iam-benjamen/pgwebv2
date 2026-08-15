@@ -16,6 +16,44 @@ const FOLDER_PATHS: Record<string, string> = {
 
 const ANIMATION_FOLDER = "GALLERY/Animations";
 
+// ── Virtual tours ─────────────────────────────────────────────────────────────
+// Add buildings/rooms here. Slugs must match Cloudinary folder/filename exactly:
+//   GALLERY/VirtualTours/{building-id}/{room-id}.jpg
+
+const TOUR_BUILDINGS = [
+  {
+    id: "enemkpali-residence",
+    name: "Enemkpali Family Residence",
+    rooms: [
+      { id: "foyer", label: "Foyer" },
+      { id: "living", label: "Living Room" },
+      { id: "kitchen", label: "Kitchen" },
+      { id: "dining", label: "Dining Room" },
+      { id: "bedroom", label: "Master Bedroom" },
+      { id: "office", label: "Office" },
+    ],
+  },
+];
+
+function tourPanoUrl(buildingId: string, roomId: string): string {
+  return cloudinary.url(`GALLERY/VirtualTours/${buildingId}/${roomId}`, {
+    fetch_format: "auto",
+    quality: "auto",
+    secure: true,
+  });
+}
+
+function tourThumbUrl(buildingId: string, roomId: string): string {
+  return cloudinary.url(`GALLERY/VirtualTours/${buildingId}/${roomId}`, {
+    width: 400,
+    height: 280,
+    crop: "fill",
+    fetch_format: "auto",
+    quality: "auto",
+    secure: true,
+  });
+}
+
 function optimizeUrl(url: string): string {
   return url.replace("/upload/", "/upload/f_auto,q_auto,w_800/");
 }
@@ -64,16 +102,40 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const filter = searchParams.get("filter") ?? "all";
 
+  if (filter === "virtual-tours") {
+    const buildings = TOUR_BUILDINGS.map((b) => ({
+      id: b.id,
+      name: b.name,
+      rooms: b.rooms.map((r) => ({
+        id: r.id,
+        label: r.label,
+        panoramaUrl: tourPanoUrl(b.id, r.id),
+        thumbUrl: tourThumbUrl(b.id, r.id),
+      })),
+    }));
+    return NextResponse.json(
+      { buildings },
+      {
+        headers: { "Cache-Control": "s-maxage=86400, stale-while-revalidate" },
+      },
+    );
+  }
+
   if (filter === "animation") {
     try {
       const videos = await getVideosForFolder(ANIMATION_FOLDER);
       return NextResponse.json(
         { videos },
-        { headers: { "Cache-Control": "s-maxage=3600, stale-while-revalidate" } }
+        {
+          headers: { "Cache-Control": "s-maxage=3600, stale-while-revalidate" },
+        },
       );
     } catch (err) {
       console.error("[works API] animation", err);
-      return NextResponse.json({ videos: [], error: "Failed to fetch videos" }, { status: 500 });
+      return NextResponse.json(
+        { videos: [], error: "Failed to fetch videos" },
+        { status: 500 },
+      );
     }
   }
 
@@ -81,8 +143,8 @@ export async function GET(request: Request) {
     filter === "all"
       ? Object.values(FOLDER_PATHS)
       : FOLDER_PATHS[filter]
-      ? [FOLDER_PATHS[filter]]
-      : [];
+        ? [FOLDER_PATHS[filter]]
+        : [];
 
   if (folderPaths.length === 0) {
     return NextResponse.json({ images: [] });
@@ -95,13 +157,13 @@ export async function GET(request: Request) {
 
     return NextResponse.json(
       { images },
-      { headers: { "Cache-Control": "s-maxage=3600, stale-while-revalidate" } }
+      { headers: { "Cache-Control": "s-maxage=3600, stale-while-revalidate" } },
     );
   } catch (err) {
     console.error("[works API]", err);
     return NextResponse.json(
       { images: [], error: "Failed to fetch images" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
