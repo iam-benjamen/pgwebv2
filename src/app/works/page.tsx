@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
   Box,
@@ -238,6 +238,14 @@ function VideoCard({ url, ratio }: WorkVideo) {
 }
 
 export default function WorksPage() {
+  return (
+    <Suspense>
+      <WorksPageInner />
+    </Suspense>
+  );
+}
+
+function WorksPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
