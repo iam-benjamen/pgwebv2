@@ -16,21 +16,56 @@ const FOLDER_PATHS: Record<string, string> = {
 
 const ANIMATION_FOLDER = "GALLERY/Animations";
 
-// ── Virtual tours ─────────────────────────────────────────────────────────────
-// Add buildings/rooms here. Slugs must match Cloudinary folder/filename exactly:
-//   GALLERY/VirtualTours/{building-id}/{room-id}.jpg
+type RoomLinkDef = { toRoom: string; yaw: string; pitch: string };
+type RoomDef = { id: string; label: string; links?: RoomLinkDef[] };
 
-const TOUR_BUILDINGS = [
+const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
   {
     id: "enemkpali-residence",
     name: "Enemkpali Family Residence",
     rooms: [
-      { id: "foyer", label: "Foyer" },
-      { id: "living", label: "Living Room" },
-      { id: "kitchen", label: "Kitchen" },
-      { id: "dining", label: "Dining Room" },
-      { id: "bedroom", label: "Master Bedroom" },
-      { id: "office", label: "Office" },
+      {
+        id: "foyer",
+        label: "Foyer",
+        links: [
+          { toRoom: "dining", yaw: "270deg", pitch: "-5deg" },
+          { toRoom: "living", yaw: "5deg", pitch: "-5deg" },
+        ],
+      },
+      {
+        id: "living",
+        label: "Living Room",
+        links: [
+          { toRoom: "foyer", yaw: "90deg", pitch: "-5deg" },
+          { toRoom: "kitchen", yaw: "180deg", pitch: "-5deg" },
+        ],
+      },
+      {
+        id: "kitchen",
+        label: "Kitchen",
+        links: [
+          { toRoom: "living", yaw: "-2deg", pitch: "5deg" },
+          { toRoom: "dining", yaw: "90deg", pitch: "-5deg" },
+        ],
+      },
+      {
+        id: "dining",
+        label: "Dining Room",
+        links: [
+          { toRoom: "kitchen", yaw: "330deg", pitch: "-5deg" },
+          { toRoom: "foyer", yaw: "100deg", pitch: "-5deg" },
+        ],
+      },
+      {
+        id: "bedroom",
+        label: "Master Bedroom",
+        links: [{ toRoom: "office", yaw: "55deg", pitch: "-5deg" }],
+      },
+      {
+        id: "office",
+        label: "Office",
+        links: [{ toRoom: "bedroom", yaw: "130deg", pitch: "-5deg" }],
+      },
     ],
   },
 ];
@@ -111,6 +146,12 @@ export async function GET(request: Request) {
         label: r.label,
         panoramaUrl: tourPanoUrl(b.id, r.id),
         thumbUrl: tourThumbUrl(b.id, r.id),
+        links: (r.links ?? []).map((l) => ({
+          toRoom: l.toRoom,
+          yaw: l.yaw,
+          pitch: l.pitch,
+          label: b.rooms.find((room) => room.id === l.toRoom)?.label ?? l.toRoom,
+        })),
       })),
     }));
     return NextResponse.json(

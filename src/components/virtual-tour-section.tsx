@@ -3,12 +3,14 @@
 import { useState, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Box, Text, HStack } from "@chakra-ui/react";
+import type { RoomLink } from "@/components/pano-viewer-inner";
 
 type Room = {
   id: string;
   label: string;
   panoramaUrl: string;
   thumbUrl: string;
+  links: RoomLink[];
 };
 
 type Building = {
@@ -54,13 +56,10 @@ function ViewerSkeleton() {
 
 // ── Dynamic PSV viewer (window access — must be client-only) ──────────────────
 
-const PanoViewer = dynamic(
-  () =>
-    import("react-photo-sphere-viewer").then((m) => ({
-      default: m.ReactPhotoSphereViewer,
-    })),
-  { ssr: false, loading: () => <ViewerSkeleton /> }
-);
+const PanoViewer = dynamic(() => import("@/components/pano-viewer-inner"), {
+  ssr: false,
+  loading: () => <ViewerSkeleton />,
+});
 
 // ── Thumbnail ─────────────────────────────────────────────────────────────────
 
@@ -159,10 +158,6 @@ export default function VirtualTourSection() {
   const activeBuilding = buildings.find((b) => b.id === activeBuildingId);
   const activeRoom = activeBuilding?.rooms.find((r) => r.id === activeRoomId);
 
-  const handleViewerReady = useCallback((instance: any) => {
-    instance.addEventListener("error", () => setRoomError(true));
-  }, []);
-
   const selectBuilding = useCallback(
     (building: Building) => {
       if (building.id === activeBuildingId) return;
@@ -192,6 +187,10 @@ export default function VirtualTourSection() {
         .psv-overlay { display: none !important; pointer-events: none !important; }
         .psv-notification { display: none !important; pointer-events: none !important; }
         .psv--capture-event { pointer-events: none !important; }
+        .tour-hotspot { position: relative; width: 40px; height: 40px; cursor: pointer; }
+        .tour-hotspot-pulse { position: absolute; inset: -6px; border-radius: 50%; background: rgba(35,69,239,0.28); animation: tour-pulse 2.2s ease-out infinite; }
+        .tour-hotspot-core { width: 40px; height: 40px; background: rgba(35,69,239,0.82); border: 1.5px solid rgba(255,255,255,0.55); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+        @keyframes tour-pulse { 0% { transform: scale(0.9); opacity: 1; } 65% { transform: scale(2.2); opacity: 0; } 100% { transform: scale(0.9); opacity: 0; } }
       `}</style>
 
       {/* ── Building tabs ────────────────────────────────────────────────── */}
@@ -288,11 +287,12 @@ export default function VirtualTourSection() {
             <PanoViewer
               key={`${activeBuildingId}-${activeRoomId}`}
               src={activeRoom.panoramaUrl}
-              width="100%"
-              height="100%"
-              navbar={false}
-              loadingTxt=""
-              onReady={handleViewerReady}
+              links={activeRoom.links}
+              onRoomSelect={(roomId) => {
+                setRoomError(false);
+                setActiveRoomId(roomId);
+              }}
+              onError={() => setRoomError(true)}
             />
             {roomError && (
               <Box

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
   Box,
   Button,
@@ -15,6 +16,8 @@ import { Navbar } from "@/components/navbar";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import VirtualTourSection from "@/components/virtual-tour-section";
+
+export const dynamic = "force-dynamic";
 
 const filters = [
   "All",
@@ -36,6 +39,10 @@ const FILTER_TO_API: Record<string, string> = {
   "AVL / Events": "avl-events",
   "Virtual Tours": "virtual-tours",
 };
+
+const API_TO_FILTER: Record<string, string> = Object.fromEntries(
+  Object.entries(FILTER_TO_API).map(([label, api]) => [api, label]),
+);
 
 const SKELETON_RATIOS = ["3/4", "4/5", "4/5", "3/4", "4/5", "3/4", "4/5", "4/5"];
 
@@ -231,13 +238,33 @@ function VideoCard({ url, ratio }: WorkVideo) {
 }
 
 export default function WorksPage() {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const tabParam = searchParams.get("tab") ?? "all";
+  const activeFilter = API_TO_FILTER[tabParam] ?? "All";
+
   const [images, setImages] = useState<WorkImage[]>([]);
   const [videos, setVideos] = useState<WorkVideo[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<WorkImage | null>(null);
 
   const closeLight = useCallback(() => setSelected(null), []);
+
+  const setActiveFilter = useCallback(
+    (f: string) => {
+      const apiKey = FILTER_TO_API[f];
+      const params = new URLSearchParams(searchParams.toString());
+      if (apiKey === "all") {
+        params.delete("tab");
+      } else {
+        params.set("tab", apiKey);
+      }
+      const qs = params.toString();
+      router.replace(qs ? `?${qs}` : "?", { scroll: false });
+    },
+    [router, searchParams],
+  );
 
   useEffect(() => {
     const apiFilter = FILTER_TO_API[activeFilter];
