@@ -59,12 +59,12 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
       {
         id: "bedroom",
         label: "Master Bedroom",
-        links: [{ toRoom: "office", yaw: "55deg", pitch: "-5deg" }],
+        links: [],
       },
       {
         id: "office",
         label: "Office",
-        links: [{ toRoom: "bedroom", yaw: "130deg", pitch: "-5deg" }],
+        links: [],
       },
     ],
   },
