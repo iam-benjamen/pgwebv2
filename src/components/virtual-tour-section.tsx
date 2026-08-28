@@ -92,8 +92,8 @@ function MiniThumb({
       style={{ WebkitTapHighlightColor: "transparent" }}
     >
       <Box
-        w={{ base: "80px", md: "100px" }}
-        h={{ base: "54px", md: "68px" }}
+        w={{ base: "68px", md: "100px" }}
+        h={{ base: "46px", md: "68px" }}
         borderRadius="5px"
         overflow="hidden"
         position="relative"
@@ -191,6 +191,8 @@ export default function VirtualTourSection() {
         .tour-hotspot-pulse { position: absolute; inset: -6px; border-radius: 50%; background: rgba(35,69,239,0.28); animation: tour-pulse 2.2s ease-out infinite; }
         .tour-hotspot-core { width: 40px; height: 40px; background: rgba(35,69,239,0.82); border: 1.5px solid rgba(255,255,255,0.55); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
         @keyframes tour-pulse { 0% { transform: scale(0.9); opacity: 1; } 65% { transform: scale(2.2); opacity: 0; } 100% { transform: scale(0.9); opacity: 0; } }
+        .tour-thumb-strip { scrollbar-width: none; }
+        .tour-thumb-strip::-webkit-scrollbar { display: none; }
       `}</style>
 
       {/* ── Building tabs ────────────────────────────────────────────────── */}
@@ -335,6 +337,9 @@ export default function VirtualTourSection() {
             border="1px solid rgba(255,255,255,0.08)"
             borderRadius="10px"
             p={{ base: "8px", md: "10px" }}
+            maxW={{ base: "calc(100vw - 32px)", md: "none" }}
+            overflowX={{ base: "auto", md: "visible" }}
+            className="tour-thumb-strip"
           >
             {activeBuilding.rooms.map((room) => (
               <MiniThumb
