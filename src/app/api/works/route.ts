@@ -73,13 +73,18 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
     name: "Keylight Flagship Model",
     rooms: [
       {
-        id: "bathroom",
-        label: "Bathroom",
+        id: "livingroom",
+        label: "Living Room",
         links: [],
       },
       {
         id: "bedroom",
         label: "Bedroom",
+        links: [],
+      },
+      {
+        id: "bathroom",
+        label: "Bathroom",
         links: [],
       },
       {
@@ -105,11 +110,6 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
       {
         id: "kitchen",
         label: "Kitchen",
-        links: [],
-      },
-      {
-        id: "livingroom",
-        label: "Living Room",
         links: [],
       },
     ],
