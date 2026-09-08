@@ -37,9 +37,9 @@ const cormorant = Cormorant({
 export const metadata: Metadata = {
   title: "PGStudio",
   description:
-    "Turning unbuilt projects into compelling sales experience that attracts investors and drives early sellouts.",
+    "Turning unbuilt projects into compelling sales experience that attract investors and drive early sellouts.",
   openGraph: {
-    images: [{ url: "/pgstudio_preview.jpg" }],
+    images: [{ url: "/pgstudio_preview.jpeg" }],
   },
 };
 

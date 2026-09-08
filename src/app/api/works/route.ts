@@ -22,7 +22,7 @@ type RoomDef = { id: string; label: string; links?: RoomLinkDef[] };
 const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
   {
     id: "enemkpali-residence",
-    name: "Enemkpali Family Residence",
+    name: "Ex-NFL Player Family Residence",
     rooms: [
       {
         id: "foyer",
@@ -64,6 +64,52 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
       {
         id: "office",
         label: "Office",
+        links: [],
+      },
+    ],
+  },
+  {
+    id: "keylight-flagshipmodel",
+    name: "Keylight Flagship Model",
+    rooms: [
+      {
+        id: "bathroom",
+        label: "Bathroom",
+        links: [],
+      },
+      {
+        id: "bedroom",
+        label: "Bedroom",
+        links: [],
+      },
+      {
+        id: "office",
+        label: "Office",
+        links: [],
+      },
+      {
+        id: "masterbedroom",
+        label: "Master Bedroom",
+        links: [],
+      },
+      {
+        id: "masterbathroom",
+        label: "Master Bathroom",
+        links: [],
+      },
+      {
+        id: "laundry",
+        label: "Laundry",
+        links: [],
+      },
+      {
+        id: "kitchen",
+        label: "Kitchen",
+        links: [],
+      },
+      {
+        id: "livingroom",
+        label: "Living Room",
         links: [],
       },
     ],
@@ -150,7 +196,8 @@ export async function GET(request: Request) {
           toRoom: l.toRoom,
           yaw: l.yaw,
           pitch: l.pitch,
-          label: b.rooms.find((room) => room.id === l.toRoom)?.label ?? l.toRoom,
+          label:
+            b.rooms.find((room) => room.id === l.toRoom)?.label ?? l.toRoom,
         })),
       })),
     }));
