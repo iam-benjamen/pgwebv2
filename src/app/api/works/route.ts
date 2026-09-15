@@ -75,7 +75,7 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
       {
         id: "livingroom",
         label: "Living Room",
-        links: [],
+        links: [{ toRoom: "kitchen", yaw: "22deg", pitch: "-3deg" }],
       },
       {
         id: "bedroom",
@@ -95,22 +95,25 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
       {
         id: "masterbedroom",
         label: "Master Bedroom",
-        links: [],
+        links: [{ toRoom: "masterbathroom", yaw: "52deg", pitch: "-5deg" }],
       },
       {
         id: "masterbathroom",
         label: "Master Bathroom",
-        links: [],
+        links: [{ toRoom: "masterbedroom", yaw: "62deg", pitch: "-10deg" }],
       },
       {
         id: "laundry",
         label: "Laundry",
-        links: [],
+        links: [{ toRoom: "kitchen", yaw: "60deg", pitch: "-5deg" }],
       },
       {
         id: "kitchen",
         label: "Kitchen",
-        links: [],
+        links: [
+          { toRoom: "livingroom", yaw: "194deg", pitch: "-6deg" },
+          { toRoom: "laundry", yaw: "322deg", pitch: "0deg" },
+        ],
       },
     ],
   },
