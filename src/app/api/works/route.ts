@@ -78,19 +78,17 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
         links: [{ toRoom: "kitchen", yaw: "22deg", pitch: "-3deg" }],
       },
       {
-        id: "bedroom",
-        label: "Bedroom",
-        links: [],
+        id: "kitchen",
+        label: "Kitchen",
+        links: [
+          { toRoom: "livingroom", yaw: "194deg", pitch: "-6deg" },
+          { toRoom: "laundry", yaw: "322deg", pitch: "0deg" },
+        ],
       },
       {
-        id: "bathroom",
-        label: "Bathroom",
-        links: [],
-      },
-      {
-        id: "office",
-        label: "Office",
-        links: [],
+        id: "laundry",
+        label: "Laundry",
+        links: [{ toRoom: "kitchen", yaw: "60deg", pitch: "-5deg" }],
       },
       {
         id: "masterbedroom",
@@ -103,17 +101,19 @@ const TOUR_BUILDINGS: Array<{ id: string; name: string; rooms: RoomDef[] }> = [
         links: [{ toRoom: "masterbedroom", yaw: "62deg", pitch: "-10deg" }],
       },
       {
-        id: "laundry",
-        label: "Laundry",
-        links: [{ toRoom: "kitchen", yaw: "60deg", pitch: "-5deg" }],
+        id: "office",
+        label: "Office",
+        links: [],
       },
       {
-        id: "kitchen",
-        label: "Kitchen",
-        links: [
-          { toRoom: "livingroom", yaw: "194deg", pitch: "-6deg" },
-          { toRoom: "laundry", yaw: "322deg", pitch: "0deg" },
-        ],
+        id: "bedroom",
+        label: "Bedroom",
+        links: [],
+      },
+      {
+        id: "bathroom",
+        label: "Bathroom",
+        links: [],
       },
     ],
   },
