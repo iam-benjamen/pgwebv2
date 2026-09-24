@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import ProjectMarketingSection from "@/components/project-marketing-section";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import FloatingBadge from "@/components/floating-badge";
@@ -228,6 +229,8 @@ export default function SalesSystemsPage() {
           </Flex>
         </Box>
       </Box>
+
+      <ProjectMarketingSection />
 
       <Box as="section" bg="#222222" py={{ base: 16, xl: "100px" }}>
         <Box w="93%" mx="auto">
