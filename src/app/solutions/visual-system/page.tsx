@@ -1,8 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   Box,
-  Button,
   Flex,
   Heading,
   HStack,
@@ -15,24 +15,25 @@ import { Navbar } from "@/components/navbar";
 import CtaSection from "@/components/cta-section";
 import Footer from "@/components/footer";
 import FloatingBadge from "@/components/floating-badge";
-import { CloudinaryVideo } from "@/components/cloudinary-video";
 
 const offeringCards = [
   {
     label: "Photorealistic Renderings",
     shadow: "-10px 10px 25px rgba(0,0,0,0.5)",
     href: "/works",
+    mediaKey: "rendering" as const,
   },
   {
     label: "Cinematic Animations",
     shadow: "0px 10px 25px rgba(0,0,0,0.5)",
-    href: "/works?filter=animation",
-    video: "GALLERY%2FVIDEOS%2FKirubel_VR_Walkthrough_-_2_l5ndej",
+    href: "/works?tab=animation",
+    mediaKey: "animation" as const,
   },
   {
     label: "VR/AR Experiences",
     shadow: "10px 10px 25px rgba(0,0,0,0.5)",
-    href: "/works?filter=virtual-tours",
+    href: "/works?tab=virtual-tours",
+    mediaKey: "vr" as const,
   },
 ];
 
@@ -64,7 +65,77 @@ const howItWorksCards = [
   },
 ];
 
+type CardMedia = {
+  rendering: string | null;
+  animation: string | null;
+  vr: string | null;
+};
+
+function CardMediaContent({ mediaKey, media }: { mediaKey: keyof CardMedia; media: CardMedia }) {
+  const src = media[mediaKey];
+
+  if (mediaKey === "animation") {
+    if (!src) return <Box w="100%" h="100%" bg="#000103" />;
+    return (
+      <video
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
+    );
+  }
+
+  if (!src) return <Box w="100%" h="100%" bg="#000103" />;
+  return (
+    <img
+      src={src}
+      alt=""
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        display: "block",
+      }}
+    />
+  );
+}
+
 export default function InteractiveConfiguratorsPage() {
+  const [media, setMedia] = useState<CardMedia>({ rendering: null, animation: null, vr: null });
+
+  useEffect(() => {
+    fetch("/api/works?filter=residential")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.images?.[0]) setMedia((m) => ({ ...m, rendering: data.images[0].url }));
+      });
+
+    fetch("/api/works?filter=animation")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.videos?.[0]) setMedia((m) => ({ ...m, animation: data.videos[0].url }));
+      });
+
+    fetch("/api/works?filter=virtual-tours")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.buildings?.[1]?.rooms?.[0]) {
+          setMedia((m) => ({ ...m, vr: data.buildings[1].rooms[0].thumbUrl }));
+        }
+      });
+  }, []);
+
   return (
     <Box bg="#F3F3F3" minH="100svh" color="#F5F7FA">
       <Navbar />
@@ -204,17 +275,7 @@ export default function InteractiveConfiguratorsPage() {
                 borderRadius="21px 21px 0 0"
                 overflow="hidden"
               >
-                {card.video ? (
-                  <CloudinaryVideo publicId={card.video} />
-                ) : (
-                  <Image
-                    src="/assets/visual-system/Image.png"
-                    alt={card.label}
-                    fill
-                    sizes="(max-width: 1279px) 100vw, 464px"
-                    style={{ objectFit: "cover", objectPosition: "center" }}
-                  />
-                )}
+                <CardMediaContent mediaKey={card.mediaKey} media={media} />
               </Box>
 
               <Link href={card.href} style={{ textDecoration: "none" }}>
