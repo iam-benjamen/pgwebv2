@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Heading, HStack, Text, Stack } from "@chakra-ui/react";
+import { Box, Heading, HStack, Link as ChakraLink, Text, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 
 const PRESS_FILTERS = ["All", "Project Features", "Company Features", "Founder Interviews", "Expert Commentary"];
@@ -192,8 +192,7 @@ function PressCard({ article }: { article: (typeof pressArticles)[0] }) {
           {article.excerpt}
         </Text>
 
-        <Box
-          as="a"
+        <ChakraLink
           href="#"
           display="flex"
           alignItems="center"
@@ -203,11 +202,10 @@ function PressCard({ article }: { article: (typeof pressArticles)[0] }) {
           fontSize="13px"
           color="#2345EF"
           _hover={{ color: "#4B6CF5" }}
-          cursor="pointer"
           transition="color 0.2s"
         >
           Read Article →
-        </Box>
+        </ChakraLink>
       </Stack>
     </Box>
   );
@@ -286,8 +284,7 @@ function InsightCard({ article }: { article: (typeof insightArticles)[0] }) {
           {article.excerpt}
         </Text>
 
-        <Box
-          as="a"
+        <ChakraLink
           href="#"
           display="flex"
           alignItems="center"
@@ -297,11 +294,10 @@ function InsightCard({ article }: { article: (typeof insightArticles)[0] }) {
           fontSize="13px"
           color="#2345EF"
           _hover={{ color: "#4B6CF5" }}
-          cursor="pointer"
           transition="color 0.2s"
         >
           Read Article →
-        </Box>
+        </ChakraLink>
       </Stack>
     </Box>
   );
@@ -342,20 +338,18 @@ function SubsectionHeader({
           {title}
         </Heading>
       </Stack>
-      <Box
-        as="a"
+      <ChakraLink
         href="#"
         fontFamily="var(--font-poppins), sans-serif"
         fontWeight="500"
         fontSize="13px"
         color="#2345EF"
         _hover={{ color: "#4B6CF5" }}
-        cursor="pointer"
         transition="color 0.2s"
         whiteSpace="nowrap"
       >
         {viewAllLabel} →
-      </Box>
+      </ChakraLink>
     </HStack>
   );
 }
